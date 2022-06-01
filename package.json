@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "source": "/src/index.html",
-  "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html --port 3000",
     "build": "parcel build"
@@ -12,11 +11,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "buffer": "^6.0.3",
     "parcel": "^2.5.0",
     "process": "^0.11.10"
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "emailjs-com": "^3.2.0",
     "js-file-download": "^0.4.12",
     "jwt-decode": "^3.1.2",
     "react": "^18.1.0",
@@ -27,7 +28,6 @@
     "react-scroll-to-bottom": "^4.2.0",
     "react-to-print": "^2.14.7",
     "socket.io-client": "^4.5.0",
-    "sweetalert": "^2.1.2",
-    "emailjs-com": "^3.2.0"
+    "sweetalert": "^2.1.2"
   }
 }
