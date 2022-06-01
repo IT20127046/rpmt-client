@@ -17,7 +17,7 @@ function AdminLogin() {
             });
         }
         else {
-            const res = await fetch('https://squad-unit.herokuapp.com/admin', {
+            const res = await fetch('https://rpmt-server.herokuapp.com/admin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
