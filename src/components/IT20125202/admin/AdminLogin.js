@@ -17,7 +17,7 @@ function AdminLogin() {
             });
         }
         else {
-            const res = await fetch('http://localhost:5000/admin', {
+            const res = await fetch('https://squad-unit.herokuapp.com/admin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
