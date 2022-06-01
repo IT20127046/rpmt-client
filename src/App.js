@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //user
 import CreateUser from './components/IT20125202/user/CreateUser';
@@ -91,7 +91,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div>
 
           <Switch>
@@ -218,7 +218,7 @@ export default class App extends Component {
             </div>
           </Switch>
         </div >
-      </HashRouter >
+      </BrowserRouter >
 
     )
   }
