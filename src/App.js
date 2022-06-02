@@ -140,10 +140,10 @@ export default class App extends Component {
                 <NavBar />
                 {/* ---------------User--------------- */}
                 {/* IT20125202 */}
-                <Route path="/user/registration" exact component={LandingPage}></Route>
+                <Route path="/" exact component={LandingPage}></Route>
                 <Route path="/user/login" exact component={UserLogin}></Route>
                 <Route path='/user/profile' exact component={UserProfile}></Route>
-                <Route path='/' exact component={CreateUser}></Route>
+                <Route path='/user/registration' exact component={CreateUser}></Route>
 
                 {/* IT20127046 */}
                 <Route path="/home" exact component={Home}></Route>
