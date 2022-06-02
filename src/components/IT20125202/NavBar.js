@@ -125,6 +125,10 @@ class NavBar extends Component {
           </li> 
 
           <li className='nav-item'>
+            <a className="nav-link" aria-current="page" href="/user/view/documentTemplate" style={{ textDecoration: 'none', color: 'white' }}>Templates</a>
+          </li> 
+
+          <li className='nav-item'>
             <a className="nav-link" aria-current="page" href="/user/contactus" style={{ textDecoration: 'none', color: 'white' }}>Contact Us</a>
           </li>
           <li className='nav-item'>

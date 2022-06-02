@@ -97,27 +97,17 @@ export default class AdminHome extends Component {
           <div className='row' style={{ height: "150px" }}>
             <div className='col p-3 mb-2 m-2 bg-light text-dark rounded'>
               <center>
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <h6>Test</h6>
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                <h6>Notice Management</h6>
                 <br />
-                <a type="button" className="btn btn-outline-dark" href={'#'}><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+                <a type="button" className="btn btn-outline-dark" href={'/view/notice'}><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
               </center>
             </div>
             <div className='col p-3 mb-2 m-2 bg-light text-dark rounded'>
-              <center>
-                <i class="fa fa-users" aria-hidden="true"></i>
-                <h6>Test</h6>
-                <br />
-                <a type="button" className="btn btn-outline-dark" href={'#'}><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
-              </center>
+              
             </div>
             <div className='col p-3 mb-2 m-2 bg-light text-dark rounded'>
-              <center>
-                <i class="fa fa-book" aria-hidden="true"></i>
-                <h6>Test</h6>
-                <br />
-                <a type="button" className="btn btn-outline-dark" href={'#'}><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
-              </center>
+              
             </div>
           </div>
           <br />

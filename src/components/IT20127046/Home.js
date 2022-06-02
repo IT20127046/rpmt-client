@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import HomeImage from "../../../public/images/HomeImage.jpg";
+import axios from 'axios';
+import HomeImage from "../../../public/images/Home.jpg";
 import RightSidePanel from "./RightSidePanel";
 import jwt_decode from "jwt-decode";
 import SLIITResearchLogo from '../../../public/images/SLIITResearchLogo.png'
@@ -9,6 +10,7 @@ export default class Home extends Component {
     super();
     this.state = {
       userType: "",
+      notices: []
     };
   }
 
@@ -33,6 +35,19 @@ export default class Home extends Component {
         userType: decoded.type,
       });
     }
+
+    this.retrieveNotice();
+  }
+
+  retrieveNotice() {
+    axios.get("http://localhost:5000/notice/getAll").then((res) => {
+      if (res.data.success) {
+        this.setState({
+          notices: res.data.exsitingNotices,
+        });
+        //console.log(this.state.documentTemp);
+      }
+    });
   }
   
   render() {
@@ -64,6 +79,17 @@ export default class Home extends Component {
                       &nbsp;&nbsp;Notice
                     </p>
                     <hr />
+
+                    <div>
+                      {this.state.notices.map((notice, index)=> (
+                        <div key={index}>
+                          <h6>{notice.noticeTitle}</h6>
+                          <p>{notice.noticeMessage}</p>
+                          <hr/>
+                        </div>
+                      ))}
+                      
+                    </div>
 
                   </div>
                 </div>

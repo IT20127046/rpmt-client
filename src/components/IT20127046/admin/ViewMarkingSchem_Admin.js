@@ -168,7 +168,7 @@ export default class ViewMarkingSchem_Admin extends Component {
                     <p>{data.postDate}</p>
 
                     <a
-                      className="btn btn-outline-primary m-2"
+                      className="btn btn-outline-primary"
                       href="#"
                       onClick={() =>
                         this.onGetMarkingCriteria(
@@ -181,13 +181,13 @@ export default class ViewMarkingSchem_Admin extends Component {
                       View
                     </a>
                     <a
-                      className="btn btn-outline-success m-2"
+                      className="btn btn-outline-success"
                       onClick={() => this.onUpdate(data._id)}
                     >
                       Edit
                     </a>
                     <a
-                      className="btn btn-outline-danger m-2"
+                      className="btn btn-outline-danger"
                       onClick={() => this.onDeleteTitle(data._id)}
                     >
                       Delete

@@ -84,6 +84,8 @@ import ContactUs from "./components/IT20127046/user/ContactUs";
 import AboutUs from "./components/IT20127046/user/AboutUs";
 
 import CreateResponse from "./components/IT20131456/user/CreateResponse";
+import ViewNotice_Admin from "./components/IT20127046/admin/ViewNotice_Admin";
+import AddNotice from "./components/IT20127046/admin/AddNotice";
 
 
 
@@ -114,6 +116,8 @@ export default class App extends Component {
             <Route path="/documentTemp" exact component={DocumentTemp_Admin}></Route>
             <Route path="/add/documentTemp" exact component={DocumentTempCreate}></Route>
             <Route path="/edit/documentTemp/:id" exact component={DocumentTempUpdate}></Route>
+            <Route path="/view/notice" exact component={ViewNotice_Admin}></Route>
+            <Route path="/add/notice" exact component={AddNotice}></Route>
 
             <Route path="/student/groups/view" exact  component={StudentGroup}></Route>
             <Route path="/student/group/view/admin/:id" component={ViewStudentGroupAdmin}></Route>

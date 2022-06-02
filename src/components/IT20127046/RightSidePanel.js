@@ -20,7 +20,7 @@ export default class RightSidePanel extends Component {
   }
 
   render() {
-
+    // Side Panel Links
     let markingSchemeLink;
     let documentTemplateLink;
 
@@ -30,6 +30,42 @@ export default class RightSidePanel extends Component {
     } else if (this.state.userType === "Supervisor" || "Panel Member") {
       markingSchemeLink = "/user/view/marking";
       documentTemplateLink = "/user/view/documentTemplate";
+    }
+
+    // Group Chat Links
+    let groupChatLink;
+
+    if (this.state.userType === "Student") {
+      groupChatLink = (
+        <a href={"/chatAppStudent"}>
+          <div
+            className="p-2 mb-2 text-white"
+            style={{ background: "#008080", textDecoration: "none" }}
+          >
+            <a className="btn text-white">
+              <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Join
+              Group Chat
+            </a>
+          </div>
+        </a>
+      );
+    } else if (
+      this.state.userType === "Supervisor" ||
+      this.state.userType === "Panel Member"
+    ) {
+      groupChatLink = (
+        <a href={"/chatAppAdmin"}>
+          <div
+            className="p-2 mb-2 text-white"
+            style={{ background: "#008080", textDecoration: "none" }}
+          >
+            <a className="btn text-white">
+              <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Join
+              Group Chat
+            </a>
+          </div>
+        </a>
+      );
     }
 
     return (
@@ -104,10 +140,8 @@ export default class RightSidePanel extends Component {
         <div className="p-3 mb-2 bg-light text-dark">
           <p className="h6"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Group Chat</p>
           <hr />
-          <div className="p-2 mb-2 bg-success text-white" >
-            <a className="btn text-white" href={""} style={{ textDecoration: 'none' }}>
-            <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Join Group Chat
-            </a>
+          <div>
+            {groupChatLink}
           </div>
         </div>
       </div>
