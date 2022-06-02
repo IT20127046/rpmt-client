@@ -2,7 +2,6 @@ import React, { useState, set } from "react";
 import axios from "axios";
 import AdminNavBar from "../../IT20125202/admin/AdminNavBar";
 import swal from "sweetalert";
-const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default function DocumentTempCreate() {
   state = {
@@ -33,7 +32,7 @@ export default function DocumentTempCreate() {
     setDescription("");
     setfile("");
 
-    axios.post(`${serverUrl}/template/add`, formdata).then(() => {
+    axios.post("http://localhost:5000/template/add", formdata).then(() => {
 
         swal("Document Upload Successful!")
         .then((value) => {
