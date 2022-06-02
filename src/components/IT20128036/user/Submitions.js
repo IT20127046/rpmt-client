@@ -160,7 +160,7 @@ function AddSubmition() {
             />
           </div>
           <center>
-            <button type="submit" class="btn btn-success">
+            <button type="submit" class="btn btn-light btn-outline-dark">
               {" "}
               <i class="fa fa-plus-circle" aria-hidden="true">
                 {" "}

@@ -169,7 +169,7 @@ export default class SviewSubmitionType extends Component {
                             <div className="col-lg-4">
                               <a
                                 href="/student/submitionsp/view"
-                                class="btn btn-success"
+                                class="btn btn-light btn-outline-dark"
                               >
                                 <i class="fa fa-plus-circle" aria-hidden="true">
                                   <strong>&nbsp;Submit Here</strong>
