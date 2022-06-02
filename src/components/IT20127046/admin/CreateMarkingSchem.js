@@ -48,7 +48,7 @@ export default class CreateMarkingSchem extends Component {
 
     axios.post(`${serverUrl}/add/markingTitle`, data).then((res) => {
       if (res.data.success) {
-        console.log("Title Add Successfully" + res.data.saveTitle);
+        swal("Title Added");
 
         this.setState({
           markingSchemTitleID: res.data.saveTitle,
@@ -73,7 +73,6 @@ export default class CreateMarkingSchem extends Component {
 
     axios.post(`${serverUrl}/add/marking`, data).then((res) => {
       if (res.data.success) {
-        alert("Hotel Created Successfully");
 
         this.setState({
           criteria: "",
@@ -147,6 +146,7 @@ export default class CreateMarkingSchem extends Component {
                     name="moduleName"
                     value={this.state.moduleName}
                     onChange={this.handleInputChange}
+                    required
                   />
 
                   <label htmlFor="assignment">Assignment</label>
@@ -158,6 +158,7 @@ export default class CreateMarkingSchem extends Component {
                     name="assignment"
                     value={this.state.assignment}
                     onChange={this.handleInputChange}
+                    required
                   />
 
                   <button type="submit" className="btn btn-outline-primary mt-2 mb-2">
@@ -180,6 +181,7 @@ export default class CreateMarkingSchem extends Component {
                     name="criteria"
                     value={this.state.criteria}
                     onChange={this.handleInputChange}
+                    required
                   />
 
                   <label htmlFor="allocateMark">Allocate Mark</label>
@@ -191,6 +193,9 @@ export default class CreateMarkingSchem extends Component {
                     name="allocateMark"
                     value={this.state.allocateMark}
                     onChange={this.handleInputChange}
+                    required
+                    pattern="[0-9]{1,2}"
+                    title="Input only number less than 100"
                   />
 
                   <button type="submit" className="btn btn-outline-primary mt-2 mb-2" disabled={this.state.addCriteriaBtn}>
@@ -203,7 +208,9 @@ export default class CreateMarkingSchem extends Component {
         </div>
 
         <center>
-          <a className="btn btn-outline-success m-2" href="/view/marking">Submit Marking Scheme</a>
+        <a className="btn btn-outline-success m-2" onClick={() => {
+            swal("Marking Scheme Added successful").then((value) => {window.location = '/view/marking';})
+          }}>Submit Marking Scheme</a>
         </center>
 
         <br />

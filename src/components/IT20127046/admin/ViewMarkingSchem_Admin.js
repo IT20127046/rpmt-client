@@ -154,7 +154,7 @@ export default class ViewMarkingSchem_Admin extends Component {
               <h6>View Marking Schemes</h6>
 
               <center>
-                <a className="btn btn-outline-success m-2" href="/add/marking">
+                <a className="btn btn-success m-2" href="/add/marking">
                   Create Marking Scheme
                 </a>
               </center>
@@ -163,9 +163,8 @@ export default class ViewMarkingSchem_Admin extends Component {
                 <hr />
                 {this.state.markingSchemTitle.map((data, index) => (
                   <div key={index}>
-                    <p>{data.moduleName}</p>
+                    <h6>{data.moduleName}</h6>
                     <p>{data.assignment}</p>
-                    <p>{data.postDate}</p>
 
                     <a
                       className="btn btn-outline-primary m-2"
