@@ -3,7 +3,8 @@ import axios from 'axios';
 import HomeImage from "../../../public/images/Home.jpg";
 import RightSidePanel from "./RightSidePanel";
 import jwt_decode from "jwt-decode";
-import SLIITResearchLogo from '../../../public/images/SLIITResearchLogo.png'
+import SLIITResearchLogo from '../../../public/images/SLIITResearchLogo.png';
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class Home extends Component {
   constructor() {
@@ -40,7 +41,7 @@ export default class Home extends Component {
   }
 
   retrieveNotice() {
-    axios.get("http://localhost:5000/notice/getAll").then((res) => {
+    axios.get(`${serverUrl}/notice/getAll`).then((res) => {
       if (res.data.success) {
         this.setState({
           notices: res.data.exsitingNotices,
