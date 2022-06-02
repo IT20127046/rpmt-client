@@ -16,17 +16,42 @@ export default class ViewSubmitionssp extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.userToken) {
-      const usertoken = localStorage.userToken;
-      const decoded = jwt_decode(usertoken);
-      this.setState({
-        groupId: decoded.groupId,
+    document.title = "Submition";
+
+    if (!localStorage.userToken) {
+      swal("Please login first", "", "warning").then((value) => {
+        if (value) {
+          this.props.history.push(`/user/login`);
+          window.location.reload();
+        }
       });
     }
+
+    //get group id using the user token
+    const usertoken = localStorage.userToken;
+    const decoded = jwt_decode(usertoken);
+
+    const id = decoded.groupId;
+    this.setState({
+      groupId: id,
+    });
 
     setTimeout(() => {
       this.retrieveSubmitions();
     }, 1000);
+
+    // if (localStorage.userToken) {
+    //   const usertoken = localStorage.userToken;
+    //   const decoded = jwt_decode(usertoken);
+    //   this.setState({
+    //     groupId: decoded.groupId,
+    //   });
+    // }
+
+    //     setTimeout(()=>{
+    //       this.retrieveSubmitions();
+
+    //     },1000);
   }
 
   //retrive submition using group id
@@ -35,16 +60,14 @@ export default class ViewSubmitionssp extends Component {
     console.log(this.state.groupId);
     //console.log("Hello")
     const gid = this.state.groupId;
-    axios
-      .get(`https://rpmt-server.herokuapp.com/submition/group/${gid}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            submitions: res.data.exsitingSubmitions,
-          });
-          console.log(this.state.submitions);
-        }
-      });
+    axios.get(`https://rpmt-server.herokuapp.com/submition/group/${gid}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          submitions: res.data.exsitingSubmitions,
+        });
+        console.log(this.state.submitions);
+      }
+    });
   }
 
   //delete submition
@@ -105,13 +128,11 @@ export default class ViewSubmitionssp extends Component {
     const searchKey = e.currentTarget.value;
 
     const gid = this.state.groupId;
-    axios
-      .get(`https://rpmt-server.herokuapp.com/submition/group/${gid}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.filterData(res.data.exsitingSubmitions, searchKey);
-        }
-      });
+    axios.get(`https://rpmt-server.herokuapp.com/submition/group/${gid}`).then((res) => {
+      if (res.data.success) {
+        this.filterData(res.data.exsitingSubmitions, searchKey);
+      }
+    });
   };
 
   render() {

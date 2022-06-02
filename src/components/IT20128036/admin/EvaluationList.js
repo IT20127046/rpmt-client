@@ -15,6 +15,8 @@ export default class EvaluationList extends Component {
   }
 
   componentDidMount() {
+    document.title = "Eval List";
+
     if (localStorage.userToken) {
       const usertoken = localStorage.userToken;
       const decoded = jwt_decode(usertoken);
@@ -30,17 +32,15 @@ export default class EvaluationList extends Component {
   //retrive evaluations
   retriveEvaluations() {
     const pnel = this.state.panel;
-    axios
-      .get(`https://rpmt-server.herokuapp.com/evaluation/panel/${pnel}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            evaluations: res.data.existingEvaluations,
-          });
+    axios.get(`https://rpmt-server.herokuapp.com/evaluation/panel/${pnel}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          evaluations: res.data.existingEvaluations,
+        });
 
-          console.log(this.state.evaluations);
-        }
-      });
+        console.log(this.state.evaluations);
+      }
+    });
   }
   //delete evaluation
   onDelete = (id) => {
@@ -83,13 +83,11 @@ export default class EvaluationList extends Component {
     const searchKey = e.currentTarget.value;
 
     const pnel = this.state.panel;
-    axios
-      .get(`https://rpmt-server.herokuapp.com/evaluation/panel/${pnel}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.filterData(res.data.existingEvaluations, searchKey);
-        }
-      });
+    axios.get(`https://rpmt-server.herokuapp.com/evaluation/panel/${pnel}`).then((res) => {
+      if (res.data.success) {
+        this.filterData(res.data.existingEvaluations, searchKey);
+      }
+    });
   };
 
   render() {

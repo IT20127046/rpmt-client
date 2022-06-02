@@ -11,6 +11,7 @@ export class ComponentToPrint extends React.PureComponent {
   }
 
   componentDidMount() {
+    document.title = "Marks";
     this.retriveMarks();
   }
   //retrive marks

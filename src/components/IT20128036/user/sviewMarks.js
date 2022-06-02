@@ -13,6 +13,7 @@ export default class sviewMarks extends Component {
   }
 
   componentDidMount() {
+    document.title = "Marks";
     this.retriveMarks();
   }
   //retrive marks
@@ -30,12 +31,10 @@ export default class sviewMarks extends Component {
 
   //delete marks
   onDelete = (id) => {
-    axios
-      .delete(`https://rpmt-server.herokuapp.com/mark/delete/${id}`)
-      .then((res) => {
-        alert("Deleted Successfully");
-        this.retriveMarks();
-      });
+    axios.delete(`https://rpmt-server.herokuapp.com/mark/delete/${id}`).then((res) => {
+      alert("Deleted Successfully");
+      this.retriveMarks();
+    });
   };
 
   //filter marks

@@ -19,6 +19,8 @@ export default class AddMarks extends Component {
   }
 
   componentDidMount() {
+    document.title = "Add Marks";
+
     if (localStorage.userToken) {
       const usertoken = localStorage.userToken;
       const decoded = jwt_decode(usertoken);
@@ -83,23 +85,21 @@ export default class AddMarks extends Component {
     };
     console.log(data);
     //save marks
-    axios
-      .post(`https://rpmt-server.herokuapp.com/mark/save`, data)
-      .then((res) => {
-        if (res.data.success) {
-          swal("Marks Added Successfully !", "", "success").then((value) => {
-            window.location = "/submitions/view";
-          });
+    axios.post(`https://rpmt-server.herokuapp.com/mark/save`, data).then((res) => {
+      if (res.data.success) {
+        swal("Marks Added Successfully !", "", "success").then((value) => {
+          window.location = "/submitions/view";
+        });
 
-          this.setState({
-            groupId: "",
-            type: "",
-            marks: "",
-            gradingStatus: "",
-            markedby: "",
-          });
-        }
-      });
+        this.setState({
+          groupId: "",
+          type: "",
+          marks: "",
+          gradingStatus: "",
+          markedby: "",
+        });
+      }
+    });
 
     const statusdata = {
       status: status,
@@ -108,10 +108,7 @@ export default class AddMarks extends Component {
     //update status
     const ids = this.props.match.params.id;
     axios
-      .put(
-        `https://rpmt-server.herokuapp.com/submition/update/${ids}`,
-        statusdata
-      )
+      .put(`https://rpmt-server.herokuapp.com/submition/update/${ids}`, statusdata)
       .then((res) => {
         if (res.data.success) {
           console.log("Updated Successfully");
@@ -124,17 +121,15 @@ export default class AddMarks extends Component {
     const id = this.props.match.params.id;
 
     //retrive submition data
-    axios
-      .get(`https://rpmt-server.herokuapp.com/submition/${id}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            groupId: res.data.submition.groupId,
-            type: res.data.submition.type,
-          });
-          console.log(this.state);
-        }
-      });
+    axios.get(`https://rpmt-server.herokuapp.com/submition/${id}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          groupId: res.data.submition.groupId,
+          type: res.data.submition.type,
+        });
+        console.log(this.state);
+      }
+    });
 
     // }
   }

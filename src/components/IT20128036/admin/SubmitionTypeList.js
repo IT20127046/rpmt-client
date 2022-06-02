@@ -16,17 +16,15 @@ export default class SubmitionTypeList extends Component {
   }
   //retrive submitiontype
   retrivesubmitionTypes() {
-    axios
-      .get("https://rpmt-server.herokuapp.com/submitiontypes")
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            submitiontypes: res.data.existingsubmitonTypes,
-          });
+    axios.get("https://rpmt-server.herokuapp.com/submitiontypes").then((res) => {
+      if (res.data.success) {
+        this.setState({
+          submitiontypes: res.data.existingsubmitonTypes,
+        });
 
-          console.log(this.state.submitiontypes);
-        }
-      });
+        console.log(this.state.submitiontypes);
+      }
+    });
   }
   //delete submitiontype
   onDelete = (id) => {
@@ -39,9 +37,7 @@ export default class SubmitionTypeList extends Component {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(
-            `https://rpmt-server.herokuapp.com/submitiontype/delete/${id}`
-          )
+          .delete(`https://rpmt-server.herokuapp.com/submitiontype/delete/${id}`)
           .then((res) => {
             this.retrivesubmitionTypes();
           });
@@ -70,13 +66,11 @@ export default class SubmitionTypeList extends Component {
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios
-      .get("https://rpmt-server.herokuapp.com/submitiontypes")
-      .then((res) => {
-        if (res.data.success) {
-          this.filterData(res.data.existingsubmitonTypes, searchKey);
-        }
-      });
+    axios.get("https://rpmt-server.herokuapp.com/submitiontypes").then((res) => {
+      if (res.data.success) {
+        this.filterData(res.data.existingsubmitonTypes, searchKey);
+      }
+    });
   };
 
   render() {

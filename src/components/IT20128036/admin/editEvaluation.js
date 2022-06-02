@@ -67,26 +67,26 @@ export default class EditEvaluation extends Component {
   };
 
   componentDidMount() {
+    document.title = "Edit Evaluation";
+
     // if(this.props.match && this.props.match.params.id){
     const id = this.props.match.params.id;
 
     //retrive evaluation to update
-    axios
-      .get(`https://rpmt-server.herokuapp.com/evaluation/${id}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            groupId: res.data.evaluation.groupId,
-            evaluationTopic: res.data.evaluation.evaluationTopic,
-            panel: res.data.evaluation.panel,
-            date: res.data.evaluation.date,
-            from: res.data.evaluation.from,
-            to: res.data.evaluation.to,
-            link: res.data.evaluation.link,
-          });
-          console.log(this.state);
-        }
-      });
+    axios.get(`https://rpmt-server.herokuapp.com/evaluation/${id}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          groupId: res.data.evaluation.groupId,
+          evaluationTopic: res.data.evaluation.evaluationTopic,
+          panel: res.data.evaluation.panel,
+          date: res.data.evaluation.date,
+          from: res.data.evaluation.from,
+          to: res.data.evaluation.to,
+          link: res.data.evaluation.link,
+        });
+        console.log(this.state);
+      }
+    });
 
     // }
   }

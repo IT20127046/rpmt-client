@@ -29,17 +29,15 @@ export class StudentMarksSp extends Component {
   //retrive marks
   retriveMarks() {
     const id = this.state.groupId;
-    axios
-      .get(`https://rpmt-server.herokuapp.com/marks/group/${id}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            marks: res.data.existingMarks,
-          });
+    axios.get(`https://rpmt-server.herokuapp.com/marks/group/${id}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          marks: res.data.existingMarks,
+        });
 
-          console.log(this.state.marks);
-        }
-      });
+        console.log(this.state.marks);
+      }
+    });
   }
 
   render() {
