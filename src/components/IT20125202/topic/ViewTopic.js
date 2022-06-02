@@ -28,7 +28,7 @@ export default class ViewTopic extends Component {
     }
     
     const id = this.props.match.params.id;
-    axios.get(`http://localhost:5000/topic/${id}`).then((res) => {
+    axios.get(`https://rpmt-server.herokuapp.com/topic/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           topic: res.data.topic

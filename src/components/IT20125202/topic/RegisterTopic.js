@@ -98,7 +98,7 @@ export default class RegisterTopic extends Component {
 
         // save the validated data
         if (validated) {
-            axios.post('http://localhost:5000/topic/save', data).then((res) => {
+            axios.post('https://rpmt-server.herokuapp.com/topic/save', data).then((res) => {
                 if (res.data.success) {
                     swal("Registered successfully!", "", "success")
                         .then((value) => {
