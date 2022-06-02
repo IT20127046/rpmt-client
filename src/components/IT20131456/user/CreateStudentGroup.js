@@ -74,7 +74,7 @@ export default class CreateStudentGroup extends Component {
 
     console.log(data);
 
-        axios.post("http://localhost:5000/sgroup/save", data).then((res) => {
+        axios.post("https://rpmt-server.herokuapp.com/sgroup/save", data).then((res) => {
       if (res.data.success) {
         swal("Group Registerd Successfully", "", "success")
         .then((value)=>{

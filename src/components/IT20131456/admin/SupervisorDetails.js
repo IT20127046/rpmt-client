@@ -17,7 +17,7 @@ export default class SupervisorDetails extends Component {
   }
 
   retrieveSupervisorDetails() {
-    axios.get("http://localhost:5000/supervisors").then((res) => {
+    axios.get("https://rpmt-server.herokuapp.com/supervisors").then((res) => {
       if (res.data.success) {
         this.setState({
           supervisordetails: res.data.existingsupervisordetails,
@@ -29,7 +29,7 @@ export default class SupervisorDetails extends Component {
   }
 
   onDelete = (id) => {
-    axios.delete(`http://localhost:5000/supervisor/delete/${id}`).then((res) => {
+    axios.delete(`https://rpmt-server.herokuapp.com/supervisor/delete/${id}`).then((res) => {
       swal("Are you sure to delete the Supervisor Details?", "", "warning");
       this.retrieveSupervisorDetails();
     });
@@ -59,7 +59,7 @@ export default class SupervisorDetails extends Component {
 
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
-    axios.get("http://localhost:5000/supervisors").then((res) => {
+    axios.get("https://rpmt-server.herokuapp.com/supervisors").then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingsupervisordetails, searchKey);
       }      
