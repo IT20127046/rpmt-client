@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 export default class SubmitionTypeList extends Component {
   constructor(props) {
@@ -14,71 +14,45 @@ export default class SubmitionTypeList extends Component {
   componentDidMount() {
     this.retrivesubmitionTypes();
   }
-//retrive submitiontype
+  //retrive submitiontype
   retrivesubmitionTypes() {
-    axios.get("http://localhost:5000/submitiontypes").then((res) => {
-      if (res.data.success) {
-        this.setState({
-          submitiontypes: res.data.existingsubmitonTypes,
-        });
+    axios
+      .get("https://rpmt-server.herokuapp.com/submitiontypes")
+      .then((res) => {
+        if (res.data.success) {
+          this.setState({
+            submitiontypes: res.data.existingsubmitonTypes,
+          });
 
-        console.log(this.state.submitiontypes);
-      }
-    });
+          console.log(this.state.submitiontypes);
+        }
+      });
   }
-//delete submitiontype
+  //delete submitiontype
   onDelete = (id) => {
- 
-
-
-
-
-
-      
-
-      swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this file!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-
-
-
-          axios
-          .delete(`http://localhost:5000/submitiontype/delete/${id}`)
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(
+            `https://rpmt-server.herokuapp.com/submitiontype/delete/${id}`
+          )
           .then((res) => {
             this.retrivesubmitionTypes();
           });
 
-
-
-       
-
-
-
-
-
-          swal("Submition Type has been deleted","","success");
-        } else {
-          swal("Your file is safe!");
-        }
-      });
-
-
-
-
-
-
-
-
-
-
+        swal("Submition Type has been deleted", "", "success");
+      } else {
+        swal("Your file is safe!");
+      }
+    });
   };
-//filter submitiontype
+  //filter submitiontype
   filterData(submitiontypes, searchKey) {
     const result = submitiontypes.filter(
       (submitiontype) =>
@@ -92,15 +66,17 @@ export default class SubmitionTypeList extends Component {
 
     this.setState({ submitiontypes: result });
   }
-//search submitiontypes
+  //search submitiontypes
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios.get("http://localhost:5000/submitiontypes").then((res) => {
-      if (res.data.success) {
-        this.filterData(res.data.existingsubmitonTypes, searchKey);
-      }
-    });
+    axios
+      .get("https://rpmt-server.herokuapp.com/submitiontypes")
+      .then((res) => {
+        if (res.data.success) {
+          this.filterData(res.data.existingsubmitonTypes, searchKey);
+        }
+      });
   };
 
   render() {
@@ -132,14 +108,6 @@ export default class SubmitionTypeList extends Component {
                         {" "}
                         {submitiontypes.submitionType} Submition{" "}
                       </h5>
-
-
-
-
-
-
-
-
                     </div>
 
                     <p class="card-text"></p>
@@ -151,7 +119,6 @@ export default class SubmitionTypeList extends Component {
                       <strong>Guidelines</strong>
                     </p>
                     <p>{submitiontypes.guidelines}</p>
-                  
 
                     <p>
                       {" "}
@@ -161,8 +128,11 @@ export default class SubmitionTypeList extends Component {
                     <p>
                       <strong>Deadline</strong>
                     </p>
-                    <p>{submitiontypes.deadLine}  &nbsp;&nbsp;&nbsp;&nbsp; -{submitiontypes.Status}-</p>
-                   
+                    <p>
+                      {submitiontypes.deadLine} &nbsp;&nbsp;&nbsp;&nbsp; -
+                      {submitiontypes.Status}-
+                    </p>
+
                     <p>
                       <strong></strong>
                     </p>
@@ -170,7 +140,10 @@ export default class SubmitionTypeList extends Component {
                     <div className="row">
                       <div className="col-lg-4">
                         <a href="#" class="btn btn-outline-success">
-                          <i class="fa fa-plus" aria-hidden="true"><br/>Submit</i>
+                          <i class="fa fa-plus" aria-hidden="true">
+                            <br />
+                            Submit
+                          </i>
                         </a>
                       </div>
 
@@ -180,7 +153,10 @@ export default class SubmitionTypeList extends Component {
                           class="btn btn-outline-primary"
                         >
                           {" "}
-                          <i  class="fa fa-pencil-square-o" aria-hidden="true"><br/>Update</i>
+                          <i class="fa fa-pencil-square-o" aria-hidden="true">
+                            <br />
+                            Update
+                          </i>
                         </a>
                       </div>
 
@@ -193,7 +169,10 @@ export default class SubmitionTypeList extends Component {
                           }}
                         >
                           {" "}
-                          <i class="fa fa-trash-o" aria-hidden="true"><br/>Delete</i>
+                          <i class="fa fa-trash-o" aria-hidden="true">
+                            <br />
+                            Delete
+                          </i>
                         </a>
                       </div>
                     </div>
