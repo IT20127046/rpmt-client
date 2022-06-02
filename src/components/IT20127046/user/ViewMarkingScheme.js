@@ -93,10 +93,11 @@ export default class ViewMarkingScheme extends Component {
                   <div style={headlineBar}>
                     <h6>Note</h6>
                   </div>
-                  <p>
-                    Document Template Document Template Document Template
-                    Document Template Document Template{" "}
-                  </p>
+                  <div className="container">
+                    <p>
+                      View and download marking schemes realted to assignment
+                    </p>
+                  </div>
 
                   <div style={headlineBar}>
                     <h6>Marking Schemes</h6>
