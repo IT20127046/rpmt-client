@@ -113,13 +113,6 @@ export default class DisplayMarkingScheme extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-9">
-                  <div style={headlineBar}>
-                    <h6>Note</h6>
-                  </div>
-                  <p>
-                    Document Template Document Template Document Template
-                    Document Template Document Template{" "}
-                  </p>
 
                   <div style={headlineBar}>
                     <h6>Marking Schemes</h6>

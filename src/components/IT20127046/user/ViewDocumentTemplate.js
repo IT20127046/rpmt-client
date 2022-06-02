@@ -116,12 +116,11 @@ export default class ViewDocumentTemplate extends Component {
                   <div style={headlineBar}>
                     <h6>Note</h6>
                   </div>
-                  <p>
-                    Document Template Document Template Document Template
-                    Document Template Document Template{" "}
-                  </p>
-
-                  
+                  <div className="container">
+                    <p>
+                      Download template for create Proposal Document, Presentation, Final Thesis
+                    </p>
+                  </div>
 
                   <div style={headlineBar}>
                     <h6>Proposal Document Template</h6>

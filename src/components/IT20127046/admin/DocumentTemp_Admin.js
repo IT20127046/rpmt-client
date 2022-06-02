@@ -76,7 +76,7 @@ export default class DocumentTemp_Admin extends Component {
     
     const serachKey = e.currentTarget.value;
 
-    axios.get("http://localhost:5000/template/getAll").then((res) => {
+    axios.get(`${serverUrl}/template/getAll`).then((res) => {
       if (res.data.success) {
         this.filterData(res.data.exsitingDocumentTemp, serachKey)
       }
@@ -107,7 +107,7 @@ export default class DocumentTemp_Admin extends Component {
 
         <div className="container">
           <div>
-            <a className="btn btn-outline-success m-2" href="/add/documentTemp">
+            <a className="btn btn-success m-2" href="/add/documentTemp">
               Add Template
             </a>
           </div>
