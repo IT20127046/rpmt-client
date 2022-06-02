@@ -46,7 +46,7 @@ export default class CreateResponse extends Component {
 
     console.log(data);
 
-    axios.post("http://localhost:5000/request/save", data).then((res) => {
+    axios.post("https://rpmt-server.herokuapp.com/request/save", data).then((res) => {
       if (res.data.success) {
         swal("Response Successful", "", "success");
           this.setState({

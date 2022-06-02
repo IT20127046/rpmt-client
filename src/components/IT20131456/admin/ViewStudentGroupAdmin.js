@@ -14,7 +14,7 @@ export default class ViewStudentGroupAdmin extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    axios.get(`http://localhost:5000/sgroup/${id}`).then((res) => {
+    axios.get(`https://rpmt-server.herokuapp.com/sgroup/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           studentgroup: res.data.stugroup,

@@ -54,7 +54,7 @@ export default class CreateSupervisorDetails extends Component {
 
     console.log(data);
 
-    axios.post("http://localhost:5000/supervisor/save", data).then((res) => {
+    axios.post("https://rpmt-server.herokuapp.com/supervisor/save", data).then((res) => {
       if (res.data.success) {
         swal("Supervisor Details Added Successfully", "", "success")
         .then((value)=>{

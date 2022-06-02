@@ -31,7 +31,7 @@ export default class RequestSummary extends Component {
     const gId = this.state.groupId;  
     console.log(gId);
 
-    axios.get(`http://localhost:5000/request/summary/${gId}`).then((res) => {
+    axios.get(`https://rpmt-server.herokuapp.com/request/summary/${gId}`).then((res) => {
       if (res.data.success) {
         this.setState({
           requestsummary: res.data.supervisorrequest,          

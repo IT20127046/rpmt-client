@@ -45,7 +45,7 @@ export default class ViewStudentGroup extends Component {
     const gId = this.state.groupId; 
     console.log(gId);
 
-    axios.get(`http://localhost:5000/stugroup/${gId}`).then((res) => {
+    axios.get(`https://rpmt-server.herokuapp.com/stugroup/${gId}`).then((res) => {
       if (res.data.success) {
         console.log("scuuess");
         this.setState({

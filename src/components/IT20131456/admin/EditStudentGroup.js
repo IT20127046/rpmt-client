@@ -84,7 +84,7 @@ export default class EditStudentGroup extends Component {
 
     console.log(data);
 
-    axios.put(`http://localhost:5000/sgroup/update/${id}`, data).then((res) => {
+    axios.put(`https://rpmt-server.herokuapp.com/sgroup/update/${id}`, data).then((res) => {
       if (res.data.success) {
         swal("Details Updated Successfully", "", "success");
         this.setState({
@@ -111,7 +111,7 @@ export default class EditStudentGroup extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    axios.get(`http://localhost:5000/sgroup/${id}`).then((res) => {
+    axios.get(`https://rpmt-server.herokuapp.com/sgroup/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           groupid: res.data.stugroup.groupid,
