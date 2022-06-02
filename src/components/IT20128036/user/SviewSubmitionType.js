@@ -14,31 +14,54 @@ export default class SviewSubmitionType extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.userToken) {
-      const usertoken = localStorage.userToken;
-      const decoded = jwt_decode(usertoken);
-      this.setState({
-        groupId: decoded.groupId,
+    document.title = "Sub Type";
+
+    if (!localStorage.userToken) {
+      swal("Please login first", "", "warning").then((value) => {
+        if (value) {
+          this.props.history.push(`/user/login`);
+          window.location.reload();
+        }
       });
     }
+
+    //get group id using the user token
+    const usertoken = localStorage.userToken;
+    const decoded = jwt_decode(usertoken);
+
+    const id = decoded.groupId;
+    this.setState({
+      groupId: id,
+    });
 
     setTimeout(() => {
       this.retrivesubmitionTypes();
     }, 1000);
+
+    // if (localStorage.userToken) {
+    //   const usertoken = localStorage.userToken;
+    //   const decoded = jwt_decode(usertoken);
+    //   this.setState({
+    //     groupId: decoded.groupId,
+    //   });
+    // }
+
+    //     setTimeout(()=>{
+    //       this.retrivesubmitionTypes();
+
+    //     },1000);
   }
   //retrive submitiontypes
   retrivesubmitionTypes() {
-    axios
-      .get("https://rpmt-server.herokuapp.com/submitiontypes")
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            submitiontypes: res.data.existingsubmitonTypes,
-          });
+    axios.get("https://rpmt-server.herokuapp.com/submitiontypes").then((res) => {
+      if (res.data.success) {
+        this.setState({
+          submitiontypes: res.data.existingsubmitonTypes,
+        });
 
-          console.log(this.state.submitiontypes);
-        }
-      });
+        console.log(this.state.submitiontypes);
+      }
+    });
   }
   //delete submitiontype
   onDelete = (id) => {
@@ -67,13 +90,11 @@ export default class SviewSubmitionType extends Component {
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios
-      .get("https://rpmt-server.herokuapp.com/submitiontypes")
-      .then((res) => {
-        if (res.data.success) {
-          this.filterData(res.data.existingsubmitonTypes, searchKey);
-        }
-      });
+    axios.get("https://rpmt-server.herokuapp.com/submitiontypes").then((res) => {
+      if (res.data.success) {
+        this.filterData(res.data.existingsubmitonTypes, searchKey);
+      }
+    });
   };
 
   render() {
@@ -148,9 +169,9 @@ export default class SviewSubmitionType extends Component {
                             <div className="col-lg-4">
                               <a
                                 href="/student/submitionsp/view"
-                                class="btn btn-outline-success"
+                                class="btn btn-success"
                               >
-                                <i class="fa fa-plus" aria-hidden="true">
+                                <i class="fa fa-plus-circle" aria-hidden="true">
                                   <strong>&nbsp;Submit Here</strong>
                                 </i>
                               </a>

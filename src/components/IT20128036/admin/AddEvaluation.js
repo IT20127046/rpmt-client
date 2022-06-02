@@ -22,6 +22,8 @@ export default class AddEvaluation extends Component {
   }
 
   componentDidMount() {
+    document.title = "Add Evaluation";
+
     if (localStorage.userToken) {
       const usertoken = localStorage.userToken;
       const decoded = jwt_decode(usertoken);
@@ -65,27 +67,23 @@ export default class AddEvaluation extends Component {
     };
     console.log(data);
     //save evaluations
-    axios
-      .post("https://rpmt-server.herokuapp.com/evaluation/save", data)
-      .then((res) => {
-        if (res.data.success) {
-          swal("Added Evaluation Successfully !", "", "success").then(
-            (value) => {
-              window.location = "/evaluation/add";
-            }
-          );
+    axios.post("https://rpmt-server.herokuapp.com/evaluation/save", data).then((res) => {
+      if (res.data.success) {
+        swal("Added Evaluation Successfully !", "", "success").then((value) => {
+          window.location = "/evaluation/add";
+        });
 
-          this.setState({
-            groupId: "",
-            evaluationTopic: "",
-            panel: "",
-            date: "",
-            from: "",
-            to: "",
-            link: "",
-          });
-        }
-      });
+        this.setState({
+          groupId: "",
+          evaluationTopic: "",
+          panel: "",
+          date: "",
+          from: "",
+          to: "",
+          link: "",
+        });
+      }
+    });
 
     // Send data to Email Service
     const emailData = {
@@ -101,7 +99,7 @@ export default class AddEvaluation extends Component {
     };
     //send email to group members
     axios
-      .post("https://rpmt-server.herokuapp.com/submitiont/email", emailData)
+      .post("http://localhost:5000/submitiont/email", emailData)
       .then((res) => {
         if (res.data.success) {
           console.log("Sent Email Successfully");

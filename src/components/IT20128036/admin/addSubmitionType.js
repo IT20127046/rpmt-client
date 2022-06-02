@@ -20,6 +20,10 @@ export default class AddSubmitionType extends Component {
     };
   }
 
+  componentDidMount() {
+    document.title = "Add Submition Type";
+  }
+
   handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -52,26 +56,24 @@ export default class AddSubmitionType extends Component {
     };
     console.log(data);
     //save submitiontypes
-    axios
-      .post("https://rpmt-server.herokuapp.com/submitiontype/save", data)
-      .then((res) => {
-        if (res.data.success) {
-          swal("Added SubmitionType Successfully", "", "success").then(
-            (value) => {
-              window.location = "/submitiontype/add";
-            }
-          );
+    axios.post("https://rpmt-server.herokuapp.com/submitiontype/save", data).then((res) => {
+      if (res.data.success) {
+        swal("Added SubmitionType Successfully", "", "success").then(
+          (value) => {
+            window.location = "/submitiontype/add";
+          }
+        );
 
-          this.setState({
-            submitionType: "",
-            description: "",
-            almarks: "",
-            deadLine: "",
-            Status: "",
-            guidelines: "",
-          });
-        }
-      });
+        this.setState({
+          submitionType: "",
+          description: "",
+          almarks: "",
+          deadLine: "",
+          Status: "",
+          guidelines: "",
+        });
+      }
+    });
 
     // Send data to Email Service
     const emailData = {
@@ -80,7 +82,7 @@ export default class AddSubmitionType extends Component {
     };
     //send email to all students
     axios
-      .post("https://rpmt-server.herokuapp.com/submitiontype/email", emailData)
+      .post("http://localhost:5000/submitiontype/email", emailData)
       .then((res) => {
         if (res.data.success) {
           console.log("Sent Email Successfully");

@@ -68,25 +68,24 @@ export default class EditSubmitonType extends Component {
   };
 
   componentDidMount() {
+    document.title = "Edit SubType";
     // if(this.props.match && this.props.match.params.id){
     const id = this.props.match.params.id;
 
     //retrive submitiontype to update
-    axios
-      .get(`https://rpmt-server.herokuapp.com/submitiontype/${id}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            submitionType: res.data.submitiontype.submitionType,
-            description: res.data.submitiontype.description,
-            almarks: res.data.submitiontype.almarks,
-            deadLine: res.data.submitiontype.deadLine,
-            Status: res.data.submitiontype.Status,
-            guidelines: res.data.submitiontype.guidelines,
-          });
-          console.log(this.state);
-        }
-      });
+    axios.get(`https://rpmt-server.herokuapp.com/submitiontype/${id}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          submitionType: res.data.submitiontype.submitionType,
+          description: res.data.submitiontype.description,
+          almarks: res.data.submitiontype.almarks,
+          deadLine: res.data.submitiontype.deadLine,
+          Status: res.data.submitiontype.Status,
+          guidelines: res.data.submitiontype.guidelines,
+        });
+        console.log(this.state);
+      }
+    });
 
     // }
   }

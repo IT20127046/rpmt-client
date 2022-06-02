@@ -54,22 +54,21 @@ export default class EditSubmition extends Component {
   };
 
   componentDidMount() {
+    document.title = "Edit Submition";
     // if(this.props.match && this.props.match.params.id){
     const id = this.props.match.params.id;
     //retrive submition to update
-    axios
-      .get(`https://rpmt-server.herokuapp.com/submition/${id}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            groupId: res.data.submition.groupId,
-            type: res.data.submition.type,
-            description: res.data.submition.description,
-            files: res.data.submition.files,
-          });
-          console.log(this.state);
-        }
-      });
+    axios.get(`https://rpmt-server.herokuapp.com/submition/${id}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          groupId: res.data.submition.groupId,
+          type: res.data.submition.type,
+          description: res.data.submition.description,
+          files: res.data.submition.files,
+        });
+        console.log(this.state);
+      }
+    });
 
     // }
   }

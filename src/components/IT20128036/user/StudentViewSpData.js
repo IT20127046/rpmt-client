@@ -14,34 +14,57 @@ export default class StudentViewSpData extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.userToken) {
-      const usertoken = localStorage.userToken;
-      const decoded = jwt_decode(usertoken);
-      this.setState({
-        groupId: decoded.groupId,
+    document.title = "Group Data";
+
+    if (!localStorage.userToken) {
+      swal("Please login first", "", "warning").then((value) => {
+        if (value) {
+          this.props.history.push(`/user/login`);
+          window.location.reload();
+        }
       });
     }
+
+    //get group id using the user token
+    const usertoken = localStorage.userToken;
+    const decoded = jwt_decode(usertoken);
+
+    const id = decoded.groupId;
+    this.setState({
+      groupId: id,
+    });
 
     setTimeout(() => {
       this.retriveEvaluations();
     }, 1000);
+
+    // if (localStorage.userToken) {
+    //   const usertoken = localStorage.userToken;
+    //   const decoded = jwt_decode(usertoken);
+    //   this.setState({
+    //     groupId: decoded.groupId,
+    //   });
+    // }
+
+    // setTimeout(()=>{
+    //       this.retriveEvaluations();
+
+    // },1000);
   }
 
   //retrive evaluations
   retriveEvaluations() {
     const gid = this.state.groupId;
     console.log(gid);
-    axios
-      .get(`https://rpmt-server.herokuapp.com/evaluation/group/${gid}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            evaluations: res.data.existingEvaluations,
-          });
+    axios.get(`https://rpmt-server.herokuapp.com/evaluation/group/${gid}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          evaluations: res.data.existingEvaluations,
+        });
 
-          console.log(this.state.evaluations);
-        }
-      });
+        console.log(this.state.evaluations);
+      }
+    });
   }
 
   //filter evaluation
@@ -62,13 +85,11 @@ export default class StudentViewSpData extends Component {
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
     id = this.state.groupId;
-    axios
-      .get(`https://rpmt-server.herokuapp.com/evaluation/group/${id}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.filterData(res.data.existingEvaluations, searchKey);
-        }
-      });
+    axios.get(`https://rpmt-server.herokuapp.com/evaluation/group/${id}`).then((res) => {
+      if (res.data.success) {
+        this.filterData(res.data.existingEvaluations, searchKey);
+      }
+    });
   };
 
   render() {

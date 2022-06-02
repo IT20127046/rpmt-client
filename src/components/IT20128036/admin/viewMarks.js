@@ -14,6 +14,8 @@ export default class viewMarks extends Component {
   }
 
   componentDidMount() {
+    document.title = "Edit Marks";
+
     if (localStorage.userToken) {
       const usertoken = localStorage.userToken;
       const decoded = jwt_decode(usertoken);
@@ -29,17 +31,15 @@ export default class viewMarks extends Component {
   //retrive marks
   retriveMarks() {
     const name = this.state.markedby;
-    axios
-      .get(`https://rpmt-server.herokuapp.com/marks/supervisor/${name}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            marks: res.data.existingMarks,
-          });
+    axios.get(`https://rpmt-server.herokuapp.com/marks/supervisor/${name}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          marks: res.data.existingMarks,
+        });
 
-          console.log(this.state.marks);
-        }
-      });
+        console.log(this.state.marks);
+      }
+    });
   }
 
   //delete marks
@@ -52,11 +52,9 @@ export default class viewMarks extends Component {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        axios
-          .delete(`https://rpmt-server.herokuapp.com/mark/delete/${id}`)
-          .then((res) => {
-            this.retriveMarks();
-          });
+        axios.delete(`https://rpmt-server.herokuapp.com/mark/delete/${id}`).then((res) => {
+          this.retriveMarks();
+        });
 
         swal("Deleted Successfully", "", "success");
       } else {
@@ -85,13 +83,11 @@ export default class viewMarks extends Component {
     const searchKey = e.currentTarget.value;
 
     const name = this.state.markedby;
-    axios
-      .get(`https://rpmt-server.herokuapp.com/marks/supervisor/${name}`)
-      .then((res) => {
-        if (res.data.success) {
-          this.filterData(res.data.existingMarks, searchKey);
-        }
-      });
+    axios.get(`https://rpmt-server.herokuapp.com/marks/supervisor/${name}`).then((res) => {
+      if (res.data.success) {
+        this.filterData(res.data.existingMarks, searchKey);
+      }
+    });
   };
 
   render() {

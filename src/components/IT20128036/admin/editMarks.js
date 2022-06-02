@@ -31,23 +31,22 @@ export default class EditMarks extends Component {
     };
     console.log(data);
     //update marks
-    axios
-      .put(`https://rpmt-server.herokuapp.com/mark/update/${id}`, data)
-      .then((res) => {
-        if (res.data.success) {
-          swal(" Updated Successfully !", "", "success").then((value) => {
-            window.location = "/marks/view";
-          });
+    axios.put(`https://rpmt-server.herokuapp.com/mark/update/${id}`, data).then((res) => {
+      if (res.data.success) {
+        swal(" Updated Successfully !", "", "success").then((value) => {
+          window.location = "/marks/view";
+        });
 
-          this.setState({
-            marks: "",
-            gradingStatus: "",
-          });
-        }
-      });
+        this.setState({
+          marks: "",
+          gradingStatus: "",
+        });
+      }
+    });
   };
 
   componentDidMount() {
+    document.title = "Edit Marks";
     // if(this.props.match && this.props.match.params.id){
     const id = this.props.match.params.id;
 

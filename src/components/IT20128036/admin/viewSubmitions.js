@@ -13,6 +13,7 @@ export default class ViewSubmitions extends Component {
   }
 
   componentDidMount() {
+    document.title = "View Submitions";
     this.retrieveSubmitions();
   }
 
