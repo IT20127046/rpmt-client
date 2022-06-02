@@ -106,7 +106,7 @@ export default class ViewSubmitions extends Component {
               </a>
             </div>
             <div className="col-lg-4 mt-2 mb-2">
-              <h4>All Submitions</h4>
+              <h4>All Submissions</h4>
             </div>
             <div className="col-lg-4 mt-2 mb-2">
               <div className="row">

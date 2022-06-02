@@ -46,7 +46,7 @@ export class StudentMarksSp extends Component {
         <table className="table table-white  mt-4 mb-4">
           <thead>
             <tr>
-              <th scope="col">Submition Type</th>
+              <th scope="col">Submission Type</th>
               <th scope="col">Marks (?/100)</th>
               <th scope="col">Grading Status</th>
             </tr>

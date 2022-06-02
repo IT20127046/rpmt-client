@@ -35,7 +35,7 @@ export class ComponentToPrint extends React.PureComponent {
             <tr>
               <th scope="col">#</th>
               <th scope="col">Group ID</th>
-              <th scope="col">Submition Type</th>
+              <th scope="col">Submissions Type</th>
               <th scope="col">Marks (?/100)</th>
               <th scope="col">Grading Status</th>
             </tr>

@@ -102,7 +102,7 @@ export default class AddSubmitionType extends Component {
               <div className="row">
                 <div className="col-sm-12 mt-4 mx-auto">
                   <h3 className="h3 mb-3 font-weight-normal">
-                    Add New Submition Type
+                    Add New Submission Type
                   </h3>
                   <br />
                   <form className="needs-validation" onSubmit={this.onSubmit}>
@@ -113,7 +113,7 @@ export default class AddSubmitionType extends Component {
                           style={{ marginBottom: "15px" }}
                         >
                           <label style={{ marginBottom: "5px" }}>
-                            <strong>Submition Type</strong>
+                            <strong>Submission Type</strong>
                           </label>
 
                           <select
@@ -229,7 +229,7 @@ export default class AddSubmitionType extends Component {
                           style={{ marginBottom: "15px" }}
                         >
                           <label style={{ marginBottom: "5px" }}>
-                            <strong>Submition Status</strong>
+                            <strong>Submission Status</strong>
                           </label>
 
                           <select

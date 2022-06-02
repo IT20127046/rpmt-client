@@ -42,7 +42,7 @@ export default class SubmitionTypeList extends Component {
             this.retrivesubmitionTypes();
           });
 
-        swal("Submition Type has been deleted", "", "success");
+        swal("Submissions Type has been deleted", "", "success");
       } else {
         swal("Your file is safe!");
       }
@@ -79,7 +79,7 @@ export default class SubmitionTypeList extends Component {
         <div className="mt-4 mb-4">
           <div className="row">
             <div className="col-lg-7 mt-2 mb-2">
-              <h4>Submitions List</h4>
+              <h4>Submissions List</h4>
             </div>
             <div className="col-lg-5 mt-2 mb-2">
               <input
@@ -100,7 +100,7 @@ export default class SubmitionTypeList extends Component {
                     <div class="card-header">
                       <h5 class="card-title">
                         {" "}
-                        {submitiontypes.submitionType} Submition{" "}
+                        {submitiontypes.submitionType} Submission{" "}
                       </h5>
                     </div>
 

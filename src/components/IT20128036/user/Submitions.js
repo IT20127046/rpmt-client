@@ -70,7 +70,7 @@ function AddSubmition() {
       // }}
       >
         <center>
-          <h3 style={set}>Add Submition</h3>
+          <h3 style={set}>Add Submission</h3>
         </center>
         <br />
         <form onSubmit={onChangeClick} encType="multipart/form-data">
@@ -101,7 +101,7 @@ function AddSubmition() {
 
             <div className="col-sm-7 ">
               <label for="exampleInputText1" class="form-label">
-                <strong>Submition Type</strong>
+                <strong>Submission Type</strong>
               </label>
 
               <select
