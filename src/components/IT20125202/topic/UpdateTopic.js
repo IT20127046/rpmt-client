@@ -79,7 +79,7 @@ export default class UpdateTopic extends Component {
 
     // update validated data
     if (validated) {
-      axios.put(`http://localhost:5000/topic/update/${id}`, data).then((res) => {
+      axios.put(`https://rpmt-server.herokuapp.com/topic/update/${id}`, data).then((res) => {
         if (res.data.success) {
           swal("Topic updated successfully!", "", "success")
             .then((value) => {
@@ -126,7 +126,7 @@ export default class UpdateTopic extends Component {
     const id = this.props.match.params.id;
 
     // get the selected topic details
-    axios.get(`http://localhost:5000/topic/${id}`).then((res) => {
+    axios.get(`https://rpmt-server.herokuapp.com/topic/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           groupId: res.data.topic.groupId,

@@ -57,7 +57,7 @@ export default class UserProfile extends Component {
     }
 
     retrieveProfile(id) {
-        axios.get(`http://localhost:5000/user/${id}`).then((res) => {
+        axios.get(`https://rpmt-server.herokuapp.com/user/${id}`).then((res) => {
             if (res.data.success) {
                 this.setState({
                     idNumber: res.data.user.idNumber,
@@ -175,7 +175,7 @@ export default class UserProfile extends Component {
 
         if (validated) {
             if (this.state.enteredPassword === '' || this.state.newPassword === '') {
-                axios.put(`http://localhost:5000/user/update/${_id}`, data).then((res) => {
+                axios.put(`https://rpmt-server.herokuapp.com/user/update/${_id}`, data).then((res) => {
                     if (res.data.success) {
                         swal("Profile updated successfully!", "", "success")
                             .then((value) => {
@@ -200,7 +200,7 @@ export default class UserProfile extends Component {
                 data.enteredPassword = this.state.enteredPassword;
                 data.newPassword = this.state.newPassword;
 
-                axios.put(`http://localhost:5000/user/updateprofile/${_id}`, data).then((res) => {
+                axios.put(`https://rpmt-server.herokuapp.com/user/updateprofile/${_id}`, data).then((res) => {
                     if (res.data.success) {
                         swal("Profile updated successfully!", "", "success")
                             .then((value) => {

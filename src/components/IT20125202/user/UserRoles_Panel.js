@@ -35,7 +35,7 @@ export default class UserRoles_Panel extends Component {
 
   retrieveUsers() {
     const type = 'Panel Member'
-    axios.get(`http://localhost:5000/users/${type}`).then(res => {
+    axios.get(`https://rpmt-server.herokuapp.com/users/${type}`).then(res => {
       if (res.data.success) {
         this.setState({
           users: res.data.existingUsers
@@ -57,7 +57,7 @@ export default class UserRoles_Panel extends Component {
     })
       .then((willDelete) => {
         if (willDelete) {
-          axios.delete(`http://localhost:5000/user/delete/${id}`).then((res) => {
+          axios.delete(`https://rpmt-server.herokuapp.com/user/delete/${id}`).then((res) => {
             swal("User Deleted Permanently!", "", "success")
               .then((value) => {
                 if (value) {
@@ -78,7 +78,7 @@ export default class UserRoles_Panel extends Component {
 
     const searchKey = e.currentTarget.value;
 
-    axios.get('http://localhost:5000/users').then(res => {
+    axios.get('https://rpmt-server.herokuapp.com/users').then(res => {
       if (res.data.success) {
 
         this.filterData(res.data.existingUsers, searchKey);

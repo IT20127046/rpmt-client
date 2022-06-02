@@ -89,7 +89,7 @@ export default class EditUser extends Component {
     // console.log(data)
 
     if (validated) {
-      axios.put(`http://localhost:5000/user/update/${id}`, data).then((res) => {
+      axios.put(`https://rpmt-server.herokuapp.com/user/update/${id}`, data).then((res) => {
         if (res.data.success) {
           swal("User details updated successfully!", "", "success")
             .then((value) => {
@@ -123,7 +123,7 @@ export default class EditUser extends Component {
 
     const id = this.props.match.params.id;
 
-    axios.get(`http://localhost:5000/user/${id}`).then((res) => {
+    axios.get(`https://rpmt-server.herokuapp.com/user/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           idNumber: res.data.user.idNumber,
