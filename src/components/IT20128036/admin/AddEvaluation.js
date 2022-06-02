@@ -73,7 +73,7 @@ export default class AddEvaluation extends Component {
     };
     console.log(data);
 //save evaluations
-    axios.post("http://localhost:5000/evaluation/save", data).then((res) => {
+    axios.post("https://rpmt-server.herokuapp.com/evaluation/save", data).then((res) => {
       if (res.data.success) {
         swal("Added Evaluation Successfully !", "", "success")
         .then((value)=>{
@@ -119,7 +119,7 @@ export default class AddEvaluation extends Component {
 
     };
 //send email to group members
-    axios.post("http://localhost:5000/submitiont/email", emailData).then((res) => {
+    axios.post("https://rpmt-server.herokuapp.com/submitiont/email", emailData).then((res) => {
     if (res.data.success) {
       console.log("Sent Email Successfully");  
     }else{
