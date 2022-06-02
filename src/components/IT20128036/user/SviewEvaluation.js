@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
 export default class SviewEvaluation extends Component {
   constructor(props) {
     super(props);
@@ -13,11 +12,10 @@ export default class SviewEvaluation extends Component {
 
   componentDidMount() {
     this.retriveEvaluations();
-    
   }
-//retrive evaluations
+  //retrive evaluations
   retriveEvaluations() {
-    axios.get("http://localhost:5000/evaluations").then((res) => {
+    axios.get("https://rpmt-server.herokuapp.com/evaluations").then((res) => {
       if (res.data.success) {
         this.setState({
           evaluations: res.data.existingEvaluations,
@@ -27,16 +25,16 @@ export default class SviewEvaluation extends Component {
       }
     });
   }
-//delete evaluation
+  //delete evaluation
   onDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/evaluation/delete/${id}`)
+      .delete(`https://rpmt-server.herokuapp.com/evaluation/delete/${id}`)
       .then((res) => {
         alert("Deleted Successfully");
         this.retriveEvaluations();
       });
   };
-//filter evaluation
+  //filter evaluation
   filterData(evaluations, searchKey) {
     const result = evaluations.filter(
       (evaluation) =>
@@ -50,11 +48,11 @@ export default class SviewEvaluation extends Component {
 
     this.setState({ evaluations: result });
   }
-//search evaluation
+  //search evaluation
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios.get("http://localhost:5000/evaluations").then((res) => {
+    axios.get("https://rpmt-server.herokuapp.com/evaluations").then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingEvaluations, searchKey);
       }
@@ -66,7 +64,7 @@ export default class SviewEvaluation extends Component {
       <div className="me-4 mt-4 mb-2">
         <div className="row">
           <div className="col-lg-6 mt-2 mb-2">
-            <h4>All Evaluation Sessions</h4> 
+            <h4>All Evaluation Sessions</h4>
           </div>
           <div className="col-lg-6 mt-2 mb-2">
             <input
@@ -94,10 +92,9 @@ export default class SviewEvaluation extends Component {
                     <strong>{evaluations.date}</strong> from{" "}
                     <strong>{evaluations.from}</strong> to{" "}
                     <strong>{evaluations.to}</strong> with the{" "}
-                    {evaluations.panel}. Your participation is mandatory.
-                    You can connect via the link below.{" "}
+                    {evaluations.panel}. Your participation is mandatory. You
+                    can connect via the link below.{" "}
                   </p>
-
 
                   <div className="row">
                     <div className="col-lg-4">
@@ -108,8 +105,6 @@ export default class SviewEvaluation extends Component {
                       >
                         <i class="fa fa-link" aria-hidden="true"></i>Join
                       </a>
-
-
                     </div>
                   </div>
                 </div>
