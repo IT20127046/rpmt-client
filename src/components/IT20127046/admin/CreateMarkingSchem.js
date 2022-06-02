@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import AdminNavBar from "../../IT20125202/admin/AdminNavBar";
 import swal from 'sweetalert';
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class CreateMarkingSchem extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ export default class CreateMarkingSchem extends Component {
     };
     console.log(data);
 
-    axios.post("http://localhost:5000/add/markingTitle", data).then((res) => {
+    axios.post(`${serverUrl}/add/markingTitle`, data).then((res) => {
       if (res.data.success) {
         console.log("Title Add Successfully" + res.data.saveTitle);
 
@@ -70,7 +71,7 @@ export default class CreateMarkingSchem extends Component {
 
     console.log(data);
 
-    axios.post("http://localhost:5000/add/marking", data).then((res) => {
+    axios.post(`${serverUrl}/add/marking`, data).then((res) => {
       if (res.data.success) {
         alert("Hotel Created Successfully");
 
@@ -89,7 +90,7 @@ export default class CreateMarkingSchem extends Component {
   getMarkingCriteria() {
     const titleID = this.state.markingSchemTitleID;
 
-    axios.get(`http://localhost:5000/markings/get/${titleID}`).then((res) => {
+    axios.get(`${serverUrl}/markings/get/${titleID}`).then((res) => {
       if (res.data.success) {
         this.setState({
           markingCriteria: res.data.existingMarkingCriteria,
@@ -108,7 +109,7 @@ export default class CreateMarkingSchem extends Component {
     }).then((willDelete) => {
       if (willDelete) {
 
-        axios.delete(`http://localhost:5000/makingCriteria/delete/${id}`).then((res) => {
+        axios.delete(`${serverUrl}/makingCriteria/delete/${id}`).then((res) => {
             swal("Deleted Successfull!", {
                 icon: "success",
             });
@@ -120,18 +121,6 @@ export default class CreateMarkingSchem extends Component {
       } else {}
     });
   };
-
-  // retriveCriteria() {
-  //     axios.get("http://localhost:5000/get/markings").then((res) => {
-  //         if (res.data.success) {
-  //             this.setState({
-  //                 markingCriteria: res.data.existingMarkingDetails,
-  //             });
-
-  //             console.log(this.state.markingCriteria);
-  //         }
-  //     });
-  // }
 
   render() {
     return (

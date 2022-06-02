@@ -53,7 +53,7 @@ export default class UserLogin extends Component {
         }
 
         if (validated) {
-            axios.post('http://localhost:5000/user/login', {
+            axios.post('https://rpmt-server.herokuapp.com/user/login', {
                 idNumber: user.idNumber,
                 password: user.password
             }).then(res => {

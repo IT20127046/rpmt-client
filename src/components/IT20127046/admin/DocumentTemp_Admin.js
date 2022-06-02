@@ -3,6 +3,7 @@ import axios from "axios";
 import fileDownload from "js-file-download";
 import AdminNavBar from "../../IT20125202/admin/AdminNavBar";
 import swal from "sweetalert";
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class DocumentTemp_Admin extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export default class DocumentTemp_Admin extends Component {
 
   // To get all data
   retrieveDocumentTemp() {
-    axios.get("http://localhost:5000/template/getAll").then((res) => {
+    axios.get(`${serverUrl}/template/getAll`).then((res) => {
       if (res.data.success) {
         this.setState({
           documentTemp: res.data.exsitingDocumentTemp,
@@ -40,7 +41,7 @@ export default class DocumentTemp_Admin extends Component {
       }).then((willDelete) => {
         if (willDelete) {
   
-          axios.delete(`http://localhost:5000/document/delete/${id}`).then((res) => {
+          axios.delete(`${serverUrl}/document/delete/${id}`).then((res) => {
               swal("Deleted Successfull!", {
                   icon: "success",
               });
@@ -52,10 +53,6 @@ export default class DocumentTemp_Admin extends Component {
         } else {}
       });
 
-    // axios.delete(`http://localhost:5000/document/delete/${id}`).then((res) => {
-    //   alert("Delete Successful");
-    //   this.retrieveDocumentTemp();
-    // });
   };
 
   // Download File
@@ -65,7 +62,7 @@ export default class DocumentTemp_Admin extends Component {
     };
 
     axios({
-      url: "http://localhost:5000/file/download",
+      url: "https://rpmt-server.herokuapp.com/file/download",
       data,
       method: "POST",
       responseType: "blob",

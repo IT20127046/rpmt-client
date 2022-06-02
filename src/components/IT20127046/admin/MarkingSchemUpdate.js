@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import swal from 'sweetalert';
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class MarkingSchemUpdate extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ export default class MarkingSchemUpdate extends Component {
       updateID: updateid
     });
 
-    axios.get(`http://localhost:5000/markingTitle/get/${updateid}`).then((res) => { 
+    axios.get(`${serverUrl}/markingTitle/get/${updateid}`).then((res) => { 
         if(res.data.success){
             this.setState({
               moduleName:res.data.schemeTitle.moduleName,
@@ -62,7 +63,7 @@ export default class MarkingSchemUpdate extends Component {
           assignment:assignment
         }
 
-        axios.put(`http://localhost:5000/markingTitle/update/${id}`,data).then((res)=>{
+        axios.put(`${serverUrl}/markingTitle/update/${id}`,data).then((res)=>{
             if(res.data.success){
                 swal({
                     title: "Update Successfull!",

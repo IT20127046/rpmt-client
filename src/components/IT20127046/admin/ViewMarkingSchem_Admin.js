@@ -3,6 +3,7 @@ import axios from "axios";
 import AdminNavBar from "../../IT20125202/admin/AdminNavBar";
 import UpdateMarkingTitle from "./MarkingSchemUpdate";
 import swal from 'sweetalert';
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class ViewMarkingSchem_Admin extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ export default class ViewMarkingSchem_Admin extends Component {
 
   // Get marking titles from db
   retrieveTitles() {
-    axios.get("http://localhost:5000/getAll/markingTitles").then((res) => {
+    axios.get(`${serverUrl}/getAll/markingTitles`).then((res) => {
       if (res.data.success) {
         this.setState({
           markingSchemTitle: res.data.existingMarkingTitles,
@@ -48,7 +49,7 @@ export default class ViewMarkingSchem_Admin extends Component {
   };
 
   getMarkingCriteria(titleID) {
-    axios.get(`http://localhost:5000/markings/get/${titleID}`).then((res) => {
+    axios.get(`${serverUrl}/markings/get/${titleID}`).then((res) => {
       if (res.data.success) {
         this.setState({
           markingCriteria: res.data.existingMarkingCriteria,
@@ -100,7 +101,7 @@ export default class ViewMarkingSchem_Admin extends Component {
     }).then((willDelete) => {
       if (willDelete) {
 
-        axios.delete(`http://localhost:5000/markingTitle/delete/${titleID}`).then((res) => {
+        axios.delete(`${serverUrl}/markingTitle/delete/${titleID}`).then((res) => {
             swal("Deleted Successfull!", {
                 icon: "success",
             });
@@ -126,7 +127,7 @@ export default class ViewMarkingSchem_Admin extends Component {
       }).then((willDelete) => {
         if (willDelete) {
   
-          axios.delete(`http://localhost:5000/makingCriteria/delete/${criteriaID}`).then((res) => {
+          axios.delete(`${serverUrl}/makingCriteria/delete/${criteriaID}`).then((res) => {
               swal("Deleted Successfull!", {
                   icon: "success",
               });
