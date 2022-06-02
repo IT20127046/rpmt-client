@@ -3,6 +3,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import fileDownload from "js-file-download";
 import RightSidePanel from "../RightSidePanel";
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class ViewMarkingScheme extends Component {
   constructor() {
@@ -28,7 +29,7 @@ export default class ViewMarkingScheme extends Component {
 
   // Get marking titles from db
   retrieveTitles() {
-    axios.get("http://localhost:5000/getAll/markingTitles").then((res) => {
+    axios.get(`${serverUrl}/getAll/markingTitles`).then((res) => {
       if (res.data.success) {
         this.setState({
           markingSchemTitle: res.data.existingMarkingTitles,
