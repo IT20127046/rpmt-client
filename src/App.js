@@ -126,7 +126,7 @@ export default class App extends Component {
             <Route path="/supervisor/add" component={CreateSupervisorDetails}></Route>
             <Route path="/supervisor/view" component={SupervisorDetails}></Route>
             <Route path="/supervisor/update/:id" component={EditSupervisorDetails}></Route>
-            <Route path="/create/feedback" component={CreateResponse}></Route>
+            
 
 
 
