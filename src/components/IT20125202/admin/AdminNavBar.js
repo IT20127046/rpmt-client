@@ -52,7 +52,7 @@ export default class AdminNavBar extends Component {
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link" href="/submitiontype/add">Submitions</a>
+                  <a className="nav-link" href="/submitiontype/add">Submissions</a>
                 </li>
 
                 <li className="nav-item">

@@ -115,11 +115,11 @@ class NavBar extends Component {
 
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" aria-current="page" href="#" style={{ textDecoration: 'none', color: 'white' }} id="navbarDropdown" role="button" data-bs-toggle="dropdown" >
-              Submitions
+            Submissions
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a className="dropdown-item" href="/student/submitiontype/view">Submitions List</a></li>
-                <li><a className="dropdown-item" href="/student/submitionsp/view">Add Submitions</a></li>
+                <li><a className="dropdown-item" href="/student/submitiontype/view">Submissions List</a></li>
+                <li><a className="dropdown-item" href="/student/submitionsp/view">Add Submissions</a></li>
                 <li><a className="dropdown-item" href="/student/marks/view">View Marks</a></li>
                 <li><a className="dropdown-item" href="/student/group/evaluation/view">My Sessions And Marks</a></li>
             </ul>
@@ -160,10 +160,10 @@ class NavBar extends Component {
           </li> */}
             <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" aria-current="page" href="#" style={{ textDecoration: 'none', color: 'white' }} id="navbarDropdown" role="button" data-bs-toggle="dropdown" >
-              Submitions
+            Submissions
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a className="dropdown-item" href="/submitions/view">View Submitions</a></li>
+                <li><a className="dropdown-item" href="/submitions/view">View Submissions</a></li>
                 <li><a className="dropdown-item" href="/marks/view">Add / Edit Marks</a></li>
             </ul>
           </li> 

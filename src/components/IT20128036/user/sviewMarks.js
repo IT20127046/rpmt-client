@@ -75,7 +75,7 @@ export default class sviewMarks extends Component {
             </div>
 
             <div className="col-lg-5 mt-2 mb-2">
-              <h4>Marks Of Submitions</h4>
+              <h4>Marks Of Submissions</h4>
             </div>
 
             <div className="col-lg-3 mt-2 mb-2">
@@ -94,7 +94,7 @@ export default class sviewMarks extends Component {
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Group ID</th>
-                <th scope="col">Submition Type</th>
+                <th scope="col">Submission Type</th>
                 <th scope="col">Marks (?/100)</th>
                 <th scope="col">Grading Status</th>
                 <th scope="col">Marked By</th>

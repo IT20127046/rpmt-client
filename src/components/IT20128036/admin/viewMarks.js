@@ -114,7 +114,7 @@ export default class viewMarks extends Component {
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Group ID</th>
-                <th scope="col">Submition Type</th>
+                <th scope="col">Submission Type</th>
                 <th scope="col">Marks</th>
                 <th scope="col">Grading Status</th>
                 <th scope="col">Marked By</th>

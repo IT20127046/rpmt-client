@@ -78,7 +78,7 @@ export default class EditSubmition extends Component {
       <div className="container">
         <div className="col-md-12 mt-4 ">
           <div className="mx-5">
-            <h1 className="h3 mb-3 font-weight-normal">Edit Submition</h1>
+            <h1 className="h3 mb-3 font-weight-normal">Edit Submission</h1>
             <form className="needs-validation" noValidate>
               <div className="row">
                 <div className="col-4">

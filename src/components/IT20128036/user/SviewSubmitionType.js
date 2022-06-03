@@ -107,7 +107,7 @@ export default class SviewSubmitionType extends Component {
                 <div className="row">
                   <div className="col-lg-7 mt-2 mb-2">
                     <h4>
-                      Submitions List -{" "}
+                    Submissions List -{" "}
                       <a
                         href="/student/group/evaluation/view"
                         style={{ textDecoration: "none" }}
@@ -135,7 +135,7 @@ export default class SviewSubmitionType extends Component {
                           <div class="card-header">
                             <h5 class="card-title">
                               {" "}
-                              {submitiontypes.submitionType} Submition{" "}
+                              {submitiontypes.submitionType} Submission{" "}
                             </h5>
                           </div>
 
@@ -169,7 +169,7 @@ export default class SviewSubmitionType extends Component {
                             <div className="col-lg-4">
                               <a
                                 href="/student/submitionsp/view"
-                                class="btn btn-success"
+                                class="btn btn-light btn-outline-dark"
                               >
                                 <i class="fa fa-plus-circle" aria-hidden="true">
                                   <strong>&nbsp;Submit Here</strong>

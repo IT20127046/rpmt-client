@@ -98,13 +98,13 @@ export default class EditSubmitonType extends Component {
 
         <div className="col-12 mt-4">
           <div className="ms-4 me-4">
-            <h1 className="h3 mb-3 font-weight-normal">Edit Submition Type</h1>
+            <h1 className="h3 mb-3 font-weight-normal">Edit Submission Type</h1>
             <form className="needs-validation" noValidate>
               <div className="row">
                 <div className="col-sm-7">
                   <div className="form-group" style={{ marginBottom: "15px" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <strong>Submition Type</strong>
+                      <strong>Submission Type</strong>
                     </label>
                     <input
                       type="text"
@@ -165,7 +165,7 @@ export default class EditSubmitonType extends Component {
                 <div className="col-6">
                   <div className="form-group" style={{ marginBottom: "15px" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <strong>Submition Status</strong>
+                      <strong>Submission Status</strong>
                     </label>
                     <input
                       type="text"

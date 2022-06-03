@@ -147,7 +147,7 @@ export default class ViewSubmitionssp extends Component {
             <div className="mt-4 mb-2 me-4">
               <div className="row">
                 <div className="col-lg-7 mt-2 mb-2">
-                  <h4>Your Submitions</h4>
+                  <h4>Your Submissions</h4>
                 </div>
                 <div className="col-lg-5 mt-2 mb-2">
                   <input
