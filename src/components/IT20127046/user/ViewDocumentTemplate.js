@@ -3,6 +3,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import fileDownload from "js-file-download";
 import RightSidePanel from "../RightSidePanel";
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class ViewDocumentTemplate extends Component {
   constructor() {
@@ -40,7 +41,7 @@ export default class ViewDocumentTemplate extends Component {
 
   // To get all data
   retrieveDocumentTemp() {
-    axios.get("http://localhost:5000/template/getAll").then((res) => {
+    axios.get(`${serverUrl}/template/getAll`).then((res) => {
       if (res.data.success) {
         this.setState({
           documentTemplate: res.data.exsitingDocumentTemp,
@@ -57,7 +58,7 @@ export default class ViewDocumentTemplate extends Component {
     };
 
     axios({
-      url: "http://localhost:5000/file/download",
+      url: "https://rpmt-server.herokuapp.com/file/download",
       data,
       method: "POST",
       responseType: "blob",
@@ -115,12 +116,11 @@ export default class ViewDocumentTemplate extends Component {
                   <div style={headlineBar}>
                     <h6>Note</h6>
                   </div>
-                  <p>
-                    Document Template Document Template Document Template
-                    Document Template Document Template{" "}
-                  </p>
-
-                  
+                  <div className="container">
+                    <p>
+                      Download template for create Proposal Document, Presentation, Final Thesis
+                    </p>
+                  </div>
 
                   <div style={headlineBar}>
                     <h6>Proposal Document Template</h6>

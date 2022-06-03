@@ -115,13 +115,18 @@ class NavBar extends Component {
 
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" aria-current="page" href="#" style={{ textDecoration: 'none', color: 'white' }} id="navbarDropdown" role="button" data-bs-toggle="dropdown" >
-              Submitions
+            Submissions
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a className="dropdown-item" href="/student/submitiontype/view">View Submition</a></li>
-                <li><a className="dropdown-item" href="/student/submitionsp/view">Add Submition</a></li>
+                <li><a className="dropdown-item" href="/student/submitiontype/view">Submissions List</a></li>
+                <li><a className="dropdown-item" href="/student/submitionsp/view">Add Submissions</a></li>
                 <li><a className="dropdown-item" href="/student/marks/view">View Marks</a></li>
+                <li><a className="dropdown-item" href="/student/group/evaluation/view">My Sessions And Marks</a></li>
             </ul>
+          </li> 
+
+          <li className='nav-item'>
+            <a className="nav-link" aria-current="page" href="/user/view/documentTemplate" style={{ textDecoration: 'none', color: 'white' }}>Templates</a>
           </li> 
 
           <li className='nav-item'>
@@ -150,9 +155,20 @@ class NavBar extends Component {
           <li className='nav-item'>
             <a className="nav-link" aria-current="page" href="/user/profile" style={{ textDecoration: 'none', color: 'white' }}>Profile</a>
           </li>
-          <li className='nav-item'>
+          {/* <li className='nav-item'>
             <a className="nav-link" aria-current="page" href="/submitions/view" style={{ textDecoration: 'none', color: 'white' }}>Submitions</a>
-          </li>
+          </li> */}
+            <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" aria-current="page" href="#" style={{ textDecoration: 'none', color: 'white' }} id="navbarDropdown" role="button" data-bs-toggle="dropdown" >
+            Submissions
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a className="dropdown-item" href="/submitions/view">View Submissions</a></li>
+                <li><a className="dropdown-item" href="/marks/view">Add / Edit Marks</a></li>
+            </ul>
+          </li> 
+
+
           <li className='nav-item'>
             <a className="nav-link" aria-current="page" href="/user/contactus" style={{ textDecoration: 'none', color: 'white' }}>Contact Us</a>
           </li>
@@ -182,7 +198,7 @@ class NavBar extends Component {
             <a className="nav-link" aria-current="page" href="/panel/topic/list" style={{ textDecoration: 'none', color: 'white' }}>Topics</a>
           </li>
           <li className='nav-item'>
-            <a className="nav-link" aria-current="page" href="/evaluation/add" style={{ textDecoration: 'none', color: 'white' }}>Evaluation</a>
+            <a className="nav-link" aria-current="page" href="/evaluation/add" style={{ textDecoration: 'none', color: 'white' }}>Evaluations</a>
           </li>
           <li className='nav-item'>
             <a className="nav-link" aria-current="page" href="/user/contactus" style={{ textDecoration: 'none', color: 'white' }}>Contact Us</a>

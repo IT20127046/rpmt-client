@@ -36,7 +36,7 @@ export default function GroupChatStudent() {
   
   const getMembers = () => {
     
-    axios.get(`http://localhost:5000/groupMembers/get/${room}`)
+    axios.get(`https://rpmt-server.herokuapp.com/groupMembers/get/${room}`)
         .then(res => {setGroupMembers(res.data)});
         console.log(groupMembers);
   }

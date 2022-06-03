@@ -41,7 +41,7 @@ export default class ViewSubmissions extends Component {
   }
 
   retrieveTopics(id) {
-    axios.get(`http://localhost:5000/topic/submissions/${id}`).then(res => {
+    axios.get(`https://rpmt-server.herokuapp.com/topic/submissions/${id}`).then(res => {
 
       if (res.data.success) {
 
@@ -68,7 +68,7 @@ export default class ViewSubmissions extends Component {
       })
         .then((willDelete) => {
           if (willDelete) {
-            axios.delete(`http://localhost:5000/topic/delete/${id}`).then((res) => {
+            axios.delete(`https://rpmt-server.herokuapp.com/topic/delete/${id}`).then((res) => {
               swal("Topic details deleted permanently!", "", "success")
                 .then((value) => {
                   if (value) {

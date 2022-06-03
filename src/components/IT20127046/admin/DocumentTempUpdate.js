@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import AdminNavBar from "../../IT20125202/admin/AdminNavBar";
 import swal from "sweetalert";
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class DocumentTempUpdate extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ export default class DocumentTempUpdate extends Component {
       description: description,
     };
 
-    axios.put(`http://localhost:5000/document/update/${id}`, data)
+    axios.put(`${serverUrl}/document/update/${id}`, data)
     .then((res) => {
         if (res.data.success) {
             swal("Document Update Successful!")
@@ -48,9 +49,11 @@ export default class DocumentTempUpdate extends Component {
   };
 
   componentDidMount() {
+    document.title = "Update Template";
+    
     const id = this.props.match.params.id;
 
-    axios.get(`http://localhost:5000/document/get/${id}`).then((res) => {
+    axios.get(`${serverUrl}/document/get/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           documentType: res.data.document.documentType,

@@ -3,6 +3,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import fileDownload from "js-file-download";
 import RightSidePanel from "../RightSidePanel";
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class ViewMarkingScheme extends Component {
   constructor() {
@@ -14,7 +15,7 @@ export default class ViewMarkingScheme extends Component {
   }
 
   componentDidMount() {
-    document.title = "User Profile";
+    document.title = "Marking Scheme";
     if (localStorage.userToken) {
       const usertoken = localStorage.userToken;
       const decoded = jwt_decode(usertoken);
@@ -28,7 +29,7 @@ export default class ViewMarkingScheme extends Component {
 
   // Get marking titles from db
   retrieveTitles() {
-    axios.get("http://localhost:5000/getAll/markingTitles").then((res) => {
+    axios.get(`${serverUrl}/getAll/markingTitles`).then((res) => {
       if (res.data.success) {
         this.setState({
           markingSchemTitle: res.data.existingMarkingTitles,
@@ -92,10 +93,11 @@ export default class ViewMarkingScheme extends Component {
                   <div style={headlineBar}>
                     <h6>Note</h6>
                   </div>
-                  <p>
-                    Document Template Document Template Document Template
-                    Document Template Document Template{" "}
-                  </p>
+                  <div className="container">
+                    <p>
+                      View and download marking schemes realted to assignment
+                    </p>
+                  </div>
 
                   <div style={headlineBar}>
                     <h6>Marking Schemes</h6>

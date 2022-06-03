@@ -3,6 +3,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import fileDownload from "js-file-download";
 import RightSidePanel from "../RightSidePanel";
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class DisplayMarkingScheme extends Component {
   constructor() {
@@ -46,7 +47,7 @@ export default class DisplayMarkingScheme extends Component {
 
     // Get marking scheme title details
     axios
-      .get(`http://localhost:5000/markingTitle/get/${titleID}`)
+      .get(`${serverUrl}/markingTitle/get/${titleID}`)
       .then((res) => {
         if (res.data.success) {
           this.setState({
@@ -59,7 +60,7 @@ export default class DisplayMarkingScheme extends Component {
       });
 
     // Get marking scheme criterias
-    axios.get(`http://localhost:5000/markings/get/${titleID}`).then((res) => {
+    axios.get(`${serverUrl}/markings/get/${titleID}`).then((res) => {
       if (res.data.success) {
         this.setState({
           markingCriteria: res.data.existingMarkingCriteria,
@@ -112,13 +113,6 @@ export default class DisplayMarkingScheme extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-9">
-                  <div style={headlineBar}>
-                    <h6>Note</h6>
-                  </div>
-                  <p>
-                    Document Template Document Template Document Template
-                    Document Template Document Template{" "}
-                  </p>
 
                   <div style={headlineBar}>
                     <h6>Marking Schemes</h6>

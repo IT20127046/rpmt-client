@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import AdminNavBar from "../../IT20125202/admin/AdminNavBar";
 import swal from 'sweetalert';
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class CreateMarkingSchem extends Component {
   constructor(props) {
@@ -15,6 +16,10 @@ export default class CreateMarkingSchem extends Component {
       markingCriteria: [],
       addCriteriaBtn: true
     };
+  }
+
+  componentDidMount() {
+    document.title = "Create Marking Scheme";
   }
 
   handleInputChange = (e) => {
@@ -45,9 +50,9 @@ export default class CreateMarkingSchem extends Component {
     };
     console.log(data);
 
-    axios.post("http://localhost:5000/add/markingTitle", data).then((res) => {
+    axios.post(`${serverUrl}/add/markingTitle`, data).then((res) => {
       if (res.data.success) {
-        console.log("Title Add Successfully" + res.data.saveTitle);
+        swal("Title Added");
 
         this.setState({
           markingSchemTitleID: res.data.saveTitle,
@@ -70,9 +75,8 @@ export default class CreateMarkingSchem extends Component {
 
     console.log(data);
 
-    axios.post("http://localhost:5000/add/marking", data).then((res) => {
+    axios.post(`${serverUrl}/add/marking`, data).then((res) => {
       if (res.data.success) {
-        alert("Hotel Created Successfully");
 
         this.setState({
           criteria: "",
@@ -89,7 +93,7 @@ export default class CreateMarkingSchem extends Component {
   getMarkingCriteria() {
     const titleID = this.state.markingSchemTitleID;
 
-    axios.get(`http://localhost:5000/markings/get/${titleID}`).then((res) => {
+    axios.get(`${serverUrl}/markings/get/${titleID}`).then((res) => {
       if (res.data.success) {
         this.setState({
           markingCriteria: res.data.existingMarkingCriteria,
@@ -108,7 +112,7 @@ export default class CreateMarkingSchem extends Component {
     }).then((willDelete) => {
       if (willDelete) {
 
-        axios.delete(`http://localhost:5000/makingCriteria/delete/${id}`).then((res) => {
+        axios.delete(`${serverUrl}/makingCriteria/delete/${id}`).then((res) => {
             swal("Deleted Successfull!", {
                 icon: "success",
             });
@@ -120,18 +124,6 @@ export default class CreateMarkingSchem extends Component {
       } else {}
     });
   };
-
-  // retriveCriteria() {
-  //     axios.get("http://localhost:5000/get/markings").then((res) => {
-  //         if (res.data.success) {
-  //             this.setState({
-  //                 markingCriteria: res.data.existingMarkingDetails,
-  //             });
-
-  //             console.log(this.state.markingCriteria);
-  //         }
-  //     });
-  // }
 
   render() {
     return (
@@ -158,6 +150,7 @@ export default class CreateMarkingSchem extends Component {
                     name="moduleName"
                     value={this.state.moduleName}
                     onChange={this.handleInputChange}
+                    required
                   />
 
                   <label htmlFor="assignment">Assignment</label>
@@ -169,6 +162,7 @@ export default class CreateMarkingSchem extends Component {
                     name="assignment"
                     value={this.state.assignment}
                     onChange={this.handleInputChange}
+                    required
                   />
 
                   <button type="submit" className="btn btn-outline-primary mt-2 mb-2">
@@ -191,6 +185,7 @@ export default class CreateMarkingSchem extends Component {
                     name="criteria"
                     value={this.state.criteria}
                     onChange={this.handleInputChange}
+                    required
                   />
 
                   <label htmlFor="allocateMark">Allocate Mark</label>
@@ -202,6 +197,9 @@ export default class CreateMarkingSchem extends Component {
                     name="allocateMark"
                     value={this.state.allocateMark}
                     onChange={this.handleInputChange}
+                    required
+                    pattern="[0-9]{1,2}"
+                    title="Input only number less than 100"
                   />
 
                   <button type="submit" className="btn btn-outline-primary mt-2 mb-2" disabled={this.state.addCriteriaBtn}>
@@ -214,7 +212,9 @@ export default class CreateMarkingSchem extends Component {
         </div>
 
         <center>
-          <a className="btn btn-outline-success m-2" href="/view/marking">Submit Marking Scheme</a>
+        <a className="btn btn-outline-success m-2" onClick={() => {
+            swal("Marking Scheme Added successful").then((value) => {window.location = '/view/marking';})
+          }}>Submit Marking Scheme</a>
         </center>
 
         <br />

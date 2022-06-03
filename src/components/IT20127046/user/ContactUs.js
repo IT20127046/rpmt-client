@@ -3,6 +3,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import swal from "sweetalert";
 import RightSidePanel from "../RightSidePanel";
+const serverUrl = "https://rpmt-server.herokuapp.com";
 
 export default class ContactUs extends Component {
   constructor() {
@@ -72,7 +73,7 @@ export default class ContactUs extends Component {
 
   // Get user emails
   getUserEmails() {
-    axios.get("http://localhost:5000/users").then((res) => {
+    axios.get(`${serverUrl}/users`).then((res) => {
       if (res.data.success) {
         this.setState({
           users: res.data.existingUsers,
@@ -99,7 +100,7 @@ export default class ContactUs extends Component {
 
     console.log(data);
 
-    axios.post("http://localhost:5000/supprtMsg/add", data).then((res) => {
+    axios.post(`${serverUrl}/supprtMsg/add`, data).then((res) => {
       if (res.data.success) {
         swal("Message Send Successful");
       }
@@ -118,7 +119,7 @@ export default class ContactUs extends Component {
 
   // Get Student Messages
   getStudentMsg() {
-    axios.get("http://localhost:5000/supprtMsg/getAll").then((res) => {
+    axios.get(`${serverUrl}/supprtMsg/getAll`).then((res) => {
       if (res.data.success) {
         this.setState({
           studentMsgs: res.data.existingMessages,
@@ -137,7 +138,7 @@ export default class ContactUs extends Component {
         replay: replay,
       };
       axios
-        .put(`http://localhost:5000/supprtMsg/update/${replayID}`, data)
+        .put(`${serverUrl}/supprtMsg/update/${replayID}`, data)
         .then((res) => {
           if (res.data.success) {
             swal("Replay Send Successful");
@@ -157,7 +158,7 @@ export default class ContactUs extends Component {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(`http://localhost:5000/supprtMsg/delete/${MsgID}`)
+          .delete(`${serverUrl}/supprtMsg/delete/${MsgID}`)
           .then((res) => {
             swal("Deleted Successfull!", {
               icon: "success",
@@ -392,7 +393,7 @@ export default class ContactUs extends Component {
               <div className="row">
                 <div className="col-9">
                   <div style={headlineBar}>
-                    <h6>Chat with Group</h6>
+                    <h6>Chat with your group members and allocate supervisor</h6>
                   </div>
                   <div className="container">
                     <p>Chat with your group</p>
@@ -402,7 +403,9 @@ export default class ContactUs extends Component {
                   <div style={headlineBar}>
                     <h6>Support Message</h6>
                   </div>
-                  <br />
+                  <div className="container">
+                    <p>Send problems to your Supervisor or Panael Member</p>
+                  </div>
 
                   <div className="container">{supportMsg}</div>
                   <div className="container">{myMsgStudent}</div>
@@ -412,7 +415,9 @@ export default class ContactUs extends Component {
                   <div style={headlineBar}>
                     <h6>Contact Info</h6>
                   </div>
-                  <br />
+                  <div className="container">
+                    <p>Supervisors and Panel Memebrs contact informations</p>
+                  </div>
                   <div className="container">
                     {this.state.users.map((user, index) => {
                       if (

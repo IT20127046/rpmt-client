@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AddEvaluation from "./AddEvaluation";
-import swal from 'sweetalert';
-import jwt_decode from 'jwt-decode';
+import swal from "sweetalert";
+import jwt_decode from "jwt-decode";
 
 export default class EvaluationList extends Component {
   constructor(props) {
@@ -10,17 +10,13 @@ export default class EvaluationList extends Component {
 
     this.state = {
       evaluations: [],
-      panel:"",
+      panel: "",
     };
   }
 
   componentDidMount() {
+    document.title = "Eval List";
 
-
-  
-    
-
-      
     if (localStorage.userToken) {
       const usertoken = localStorage.userToken;
       const decoded = jwt_decode(usertoken);
@@ -29,21 +25,14 @@ export default class EvaluationList extends Component {
       });
     }
 
-        setTimeout(()=>{
-          this.retriveEvaluations();
-
-        },1000);
-
-
-
-
-
-    
+    setTimeout(() => {
+      this.retriveEvaluations();
+    }, 1000);
   }
-//retrive evaluations
+  //retrive evaluations
   retriveEvaluations() {
     const pnel = this.state.panel;
-    axios.get(`http://localhost:5000/evaluation/panel/${pnel}`).then((res) => {
+    axios.get(`https://rpmt-server.herokuapp.com/evaluation/panel/${pnel}`).then((res) => {
       if (res.data.success) {
         this.setState({
           evaluations: res.data.existingEvaluations,
@@ -53,51 +42,29 @@ export default class EvaluationList extends Component {
       }
     });
   }
-//delete evaluation
+  //delete evaluation
   onDelete = (id) => {
-  
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`https://rpmt-server.herokuapp.com/evaluation/delete/${id}`)
+          .then((res) => {
+            this.retriveEvaluations();
+          });
 
-
-
-
-        swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this file!",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-        })
-        .then((willDelete) => {
-          if (willDelete) {
-
-
-
-            axios
-            .delete(`http://localhost:5000/evaluation/delete/${id}`)
-            .then((res) => {
-              
-              this.retriveEvaluations();
-            });
-
-
-
-
-
-            swal("Evaluation Session  has been deleted!","","success");
-          } else {
-            swal("Your file is safe!");
-          }
-        });
-
-
-
-
-
-
-
-      
+        swal("Evaluation Session  has been deleted!", "", "success");
+      } else {
+        swal("Your file is safe!");
+      }
+    });
   };
-//search filter
+  //search filter
   filterData(evaluations, searchKey) {
     const result = evaluations.filter(
       (evaluation) =>
@@ -111,12 +78,12 @@ export default class EvaluationList extends Component {
 
     this.setState({ evaluations: result });
   }
-//search evaluation
+  //search evaluation
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
     const pnel = this.state.panel;
-    axios.get(`http://localhost:5000/evaluation/panel/${pnel}`).then((res) => {
+    axios.get(`https://rpmt-server.herokuapp.com/evaluation/panel/${pnel}`).then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingEvaluations, searchKey);
       }
@@ -156,15 +123,14 @@ export default class EvaluationList extends Component {
                     <strong>{evaluations.date}</strong> from{" "}
                     <strong>{evaluations.from}</strong> to{" "}
                     <strong>{evaluations.to}</strong> with the{" "}
-                    {evaluations.panel}. Your participation is mandatory.
-                    You can connect via the link below.{" "}
+                    {evaluations.panel}. Your participation is mandatory. You
+                    can connect via the link below.{" "}
                   </p>
 
                   <div className="row">
                     <div className="col-lg-4">
                       <a
                         href={evaluations.link}
-                       
                         class="btn btn-outline-success"
                       >
                         <i class="fa fa-link" aria-hidden="true"></i>Join
@@ -177,7 +143,8 @@ export default class EvaluationList extends Component {
                         class="btn btn-outline-primary"
                       >
                         {" "}
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        Update
                       </a>
                     </div>
 

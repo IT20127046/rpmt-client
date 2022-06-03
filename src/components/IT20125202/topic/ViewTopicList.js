@@ -34,7 +34,7 @@ export default class viewTopicList extends Component {
 
   //method for get request
   retrieveTopics() {
-    axios.get('http://localhost:5000/topics').then(res => {
+    axios.get('https://rpmt-server.herokuapp.com/topics').then(res => {
       if (res.data.success) {
         this.setState({
           topics: res.data.existingTopics

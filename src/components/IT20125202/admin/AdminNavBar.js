@@ -15,7 +15,7 @@ export default class AdminNavBar extends Component {
             .then((value) => {
               if (value) {
                 window.history.forward();
-                window.location = "http://localhost:3000/admin/login";
+                window.location = "https://rpmt-server.herokuapp.com/admin/login";
               }
             });
         } else {
