@@ -195,6 +195,9 @@ export default class App extends Component {
                 <Route path="/marks/view" component={viewMarks} />
                 <Route path="/marks/edit/:id" component={EditMarks} />
 
+                 {/*IT20131456*/}
+                <Route path="/create/feedback" component={CreateResponse}></Route>
+
                 
                 
 
