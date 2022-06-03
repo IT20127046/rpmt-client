@@ -13,6 +13,10 @@ export default class AddNotice extends Component {
           to: "",
         };
       }
+
+      componentDidMount() {
+        document.title = "Add Notice";
+      }
     
       handleInputChange = (e) => {
         const { name, value } = e.target;

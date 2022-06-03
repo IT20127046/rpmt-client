@@ -23,6 +23,8 @@ export default class ViewMarkingSchem_Admin extends Component {
   }
 
   componentDidMount() {
+    document.title = "Marking Scheme";
+    
     this.retrieveTitles();
   }
 

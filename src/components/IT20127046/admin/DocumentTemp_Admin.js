@@ -15,6 +15,8 @@ export default class DocumentTemp_Admin extends Component {
   }
 
   componentDidMount() {
+    document.title = "Document Template";
+    
     this.retrieveDocumentTemp();
   }
 

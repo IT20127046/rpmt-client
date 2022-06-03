@@ -33,6 +33,8 @@ export default class MarkingSchemUpdate extends Component {
 
   // Get id send from ViewMarkingScheme_Admin parent components and get marking title details using id
   componentDidMount() {
+    document.title = "Update Marking Scheme";
+    
     const updateid = this.props.data.updateID;
     
     this.setState({

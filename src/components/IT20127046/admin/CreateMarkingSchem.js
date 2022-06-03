@@ -18,6 +18,10 @@ export default class CreateMarkingSchem extends Component {
     };
   }
 
+  componentDidMount() {
+    document.title = "Create Marking Scheme";
+  }
+
   handleInputChange = (e) => {
     const { name, value } = e.target;
 
