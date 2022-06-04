@@ -15,7 +15,7 @@ export default class AdminNavBar extends Component {
             .then((value) => {
               if (value) {
                 window.history.forward();
-                window.location = "https://deft-genie-adc47c.netlify.app/admin/login";
+                window.location = "https://rpmt-server.herokuapp.com/admin/login";
               }
             });
         } else {
