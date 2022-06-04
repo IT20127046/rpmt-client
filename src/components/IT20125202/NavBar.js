@@ -166,7 +166,11 @@ class NavBar extends Component {
                 <li><a className="dropdown-item" href="/submitions/view">View Submissions</a></li>
                 <li><a className="dropdown-item" href="/marks/view">Add / Edit Marks</a></li>
             </ul>
-          </li> 
+          </li>          
+          
+           <li className='nav-item'>
+            <a className="nav-link" aria-current="page" href="/create/feedback" style={{ textDecoration: 'none', color: 'white' }}>Feedback</a>
+          </li>
 
 
           <li className='nav-item'>
