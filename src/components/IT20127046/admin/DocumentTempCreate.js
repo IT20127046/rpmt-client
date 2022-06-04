@@ -105,7 +105,7 @@ export default function DocumentTempCreate() {
             </div>
 
             <div className="mb-3">
-              <label className="form-label">Default file input example</label>
+              <label className="form-label">Upload Document</label>
               <input
                 className="form-control"
                 type="file"
