@@ -56,7 +56,7 @@ export default class AddSubmitionType extends Component {
     };
     console.log(data);
     //save submitiontypes
-    axios.post("https://rpmt-server.herokuapp.com/submitiontype/save", data).then((res) => {
+    axios.post("http://localhost:5000/submitiontype/save", data).then((res) => {
       if (res.data.success) {
         swal("Added SubmissionType Successfully", "", "success").then(
           (value) => {

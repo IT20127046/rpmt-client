@@ -36,7 +36,7 @@ export default class EditSubmition extends Component {
     console.log(data);
     //update submition
     axios
-      .put(`https://rpmt-server.herokuapp.com/submition/update/${id}`, data)
+      .put(`http://localhost:5000/submition/update/${id}`, data)
       .then((res) => {
         if (res.data.success) {
           swal("Updated Successfully", "", "success").then((value) => {
@@ -58,7 +58,7 @@ export default class EditSubmition extends Component {
     // if(this.props.match && this.props.match.params.id){
     const id = this.props.match.params.id;
     //retrive submition to update
-    axios.get(`https://rpmt-server.herokuapp.com/submition/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/submition/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           groupId: res.data.submition.groupId,

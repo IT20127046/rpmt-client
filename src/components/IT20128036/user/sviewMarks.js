@@ -18,7 +18,7 @@ export default class sviewMarks extends Component {
   }
   //retrive marks
   retriveMarks() {
-    axios.get("https://rpmt-server.herokuapp.com/marks").then((res) => {
+    axios.get("http://localhost:5000/marks").then((res) => {
       if (res.data.success) {
         this.setState({
           marks: res.data.existingMarks,
@@ -31,7 +31,7 @@ export default class sviewMarks extends Component {
 
   //delete marks
   onDelete = (id) => {
-    axios.delete(`https://rpmt-server.herokuapp.com/mark/delete/${id}`).then((res) => {
+    axios.delete(`http://localhost:5000/mark/delete/${id}`).then((res) => {
       alert("Deleted Successfully");
       this.retriveMarks();
     });
@@ -56,7 +56,7 @@ export default class sviewMarks extends Component {
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios.get("https://rpmt-server.herokuapp.com/marks").then((res) => {
+    axios.get("http://localhost:5000/marks").then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingMarks, searchKey);
       }

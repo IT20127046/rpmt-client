@@ -56,7 +56,7 @@ export default class StudentViewSpData extends Component {
   retriveEvaluations() {
     const gid = this.state.groupId;
     console.log(gid);
-    axios.get(`https://rpmt-server.herokuapp.com/evaluation/group/${gid}`).then((res) => {
+    axios.get(`http://localhost:5000/evaluation/group/${gid}`).then((res) => {
       if (res.data.success) {
         this.setState({
           evaluations: res.data.existingEvaluations,
@@ -85,7 +85,7 @@ export default class StudentViewSpData extends Component {
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
     id = this.state.groupId;
-    axios.get(`https://rpmt-server.herokuapp.com/evaluation/group/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/evaluation/group/${id}`).then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingEvaluations, searchKey);
       }

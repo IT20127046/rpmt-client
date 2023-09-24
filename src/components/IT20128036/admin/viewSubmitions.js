@@ -19,7 +19,7 @@ export default class ViewSubmitions extends Component {
 
   // To get all submition data
   retrieveSubmitions() {
-    axios.get("https://rpmt-server.herokuapp.com/submition/all").then((res) => {
+    axios.get("http://localhost:5000/submition/all").then((res) => {
       if (res.data.success) {
         this.setState({
           submitions: res.data.exsitingSubmitions,
@@ -48,7 +48,7 @@ export default class ViewSubmitions extends Component {
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios.get("https://rpmt-server.herokuapp.com/submition/all").then((res) => {
+    axios.get("http://localhost:5000/submition/all").then((res) => {
       if (res.data.success) {
         this.filterData(res.data.exsitingSubmitions, searchKey);
       }
@@ -62,7 +62,7 @@ export default class ViewSubmitions extends Component {
     };
 
     axios({
-      url: "https://rpmt-server.herokuapp.com/file/download",
+      url: "http://localhost:5000/file/download",
       data,
       method: "POST",
       responseType: "blob",
@@ -83,7 +83,7 @@ export default class ViewSubmitions extends Component {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(`https://rpmt-server.herokuapp.com/submition/delete/${id}`)
+          .delete(`http://localhost:5000/submition/delete/${id}`)
           .then((res) => {
             this.retrieveSubmitions();
           });

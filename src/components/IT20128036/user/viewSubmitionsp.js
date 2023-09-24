@@ -60,7 +60,7 @@ export default class ViewSubmitionssp extends Component {
     console.log(this.state.groupId);
     //console.log("Hello")
     const gid = this.state.groupId;
-    axios.get(`https://rpmt-server.herokuapp.com/submition/group/${gid}`).then((res) => {
+    axios.get(`http://localhost:5000/submition/group/${gid}`).then((res) => {
       if (res.data.success) {
         this.setState({
           submitions: res.data.exsitingSubmitions,
@@ -81,7 +81,7 @@ export default class ViewSubmitionssp extends Component {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(`https://rpmt-server.herokuapp.com/submition/delete/${id}`)
+          .delete(`http://localhost:5000/submition/delete/${id}`)
           .then((res) => {
             this.retrieveSubmitions();
           });
@@ -100,7 +100,7 @@ export default class ViewSubmitionssp extends Component {
     };
 
     axios({
-      url: "https://rpmt-server.herokuapp.com/file/download",
+      url: "http://localhost:5000/file/download",
       data,
       method: "POST",
       responseType: "blob",
@@ -128,7 +128,7 @@ export default class ViewSubmitionssp extends Component {
     const searchKey = e.currentTarget.value;
 
     const gid = this.state.groupId;
-    axios.get(`https://rpmt-server.herokuapp.com/submition/group/${gid}`).then((res) => {
+    axios.get(`http://localhost:5000/submition/group/${gid}`).then((res) => {
       if (res.data.success) {
         this.filterData(res.data.exsitingSubmitions, searchKey);
       }

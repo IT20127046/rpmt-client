@@ -53,7 +53,7 @@ export default class SviewSubmitionType extends Component {
   }
   //retrive submitiontypes
   retrivesubmitionTypes() {
-    axios.get("https://rpmt-server.herokuapp.com/submitiontypes").then((res) => {
+    axios.get("http://localhost:5000/submitiontypes").then((res) => {
       if (res.data.success) {
         this.setState({
           submitiontypes: res.data.existingsubmitonTypes,
@@ -66,7 +66,7 @@ export default class SviewSubmitionType extends Component {
   //delete submitiontype
   onDelete = (id) => {
     axios
-      .delete(`https://rpmt-server.herokuapp.com/submitiontype/delete/${id}`)
+      .delete(`http://localhost:5000/submitiontype/delete/${id}`)
       .then((res) => {
         alert("Deleted Successfully");
         this.retrivesubmitionTypes();
@@ -90,7 +90,7 @@ export default class SviewSubmitionType extends Component {
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios.get("https://rpmt-server.herokuapp.com/submitiontypes").then((res) => {
+    axios.get("http://localhost:5000/submitiontypes").then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingsubmitonTypes, searchKey);
       }

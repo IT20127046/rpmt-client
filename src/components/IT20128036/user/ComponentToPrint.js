@@ -16,7 +16,7 @@ export class ComponentToPrint extends React.PureComponent {
   }
   //retrive marks
   retriveMarks() {
-    axios.get("https://rpmt-server.herokuapp.com/marks").then((res) => {
+    axios.get("http://localhost:5000/marks").then((res) => {
       if (res.data.success) {
         this.setState({
           marks: res.data.existingMarks,

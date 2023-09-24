@@ -43,7 +43,7 @@ export default class EditEvaluation extends Component {
     console.log(data);
     //update evaluation
     axios
-      .put(`https://rpmt-server.herokuapp.com/evaluation/update/${id}`, data)
+      .put(`http://localhost:5000/evaluation/update/${id}`, data)
       .then((res) => {
         if (res.data.success) {
           swal("Evaluation Updated Successfully !", "", "success").then(
@@ -73,7 +73,7 @@ export default class EditEvaluation extends Component {
     const id = this.props.match.params.id;
 
     //retrive evaluation to update
-    axios.get(`https://rpmt-server.herokuapp.com/evaluation/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/evaluation/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           groupId: res.data.evaluation.groupId,

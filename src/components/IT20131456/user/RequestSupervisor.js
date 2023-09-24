@@ -16,7 +16,7 @@ export default class RequestSupervisor extends Component {
   }
 
   retrieveSupervisorDetails() {
-    axios.get("https://rpmt-server.herokuapp.com/supervisors").then((res) => {
+    axios.get("http://localhost:5000/supervisors").then((res) => {
       if (res.data.success) {
         this.setState({
           supervisordetails: res.data.existingsupervisordetails,
@@ -52,7 +52,7 @@ export default class RequestSupervisor extends Component {
 
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
-    axios.get("https://rpmt-server.herokuapp.com/supervisors").then((res) => {
+    axios.get("http://localhost:5000/supervisors").then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingsupervisordetails, searchKey);
       }      

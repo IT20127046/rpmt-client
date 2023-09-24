@@ -43,7 +43,7 @@ export default class UserRoles extends Component {
     let panel = 0;
     let supervisors = 0;
 
-    axios.get('https://rpmt-server.herokuapp.com/users').then(res => {
+    axios.get('http://localhost:5000/users').then(res => {
       if (res.data.success) {
         this.setState({
           users: res.data.existingUsers
@@ -85,7 +85,7 @@ export default class UserRoles extends Component {
     })
       .then((willDelete) => {
         if (willDelete) {
-          axios.delete(`https://rpmt-server.herokuapp.com/user/delete/${id}`).then((res) => {
+          axios.delete(`http://localhost:5000/user/delete/${id}`).then((res) => {
             swal("User Deleted Permanently!", "", "success")
               .then((value) => {
                 if (value) {
@@ -106,7 +106,7 @@ export default class UserRoles extends Component {
 
     const searchKey = e.currentTarget.value;
 
-    axios.get('https://rpmt-server.herokuapp.com/users').then(res => {
+    axios.get('http://localhost:5000/users').then(res => {
       if (res.data.success) {
 
         this.filterData(res.data.existingUsers, searchKey);

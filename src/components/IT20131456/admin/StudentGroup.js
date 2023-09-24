@@ -16,7 +16,7 @@ export default class StudentGroup extends Component {
   }
 
   retrieveStudentGropus() {
-    axios.get("https://rpmt-server.herokuapp.com/sgroups").then((res) => {
+    axios.get("http://localhost:5000/sgroups").then((res) => {
       if (res.data.success) {
         this.setState({
           studentgroups: res.data.existingstudentgroups,
@@ -28,7 +28,7 @@ export default class StudentGroup extends Component {
   }
 
   onDelete = (id) => {
-    axios.delete(`https://rpmt-server.herokuapp.com/sgroup/delete/${id}`).then((res) => {
+    axios.delete(`http://localhost:5000/sgroup/delete/${id}`).then((res) => {
       swal("Are you sure to delete the Group Details?", "", "warning");
       this.retrieveStudentGropus();
     });
@@ -52,7 +52,7 @@ export default class StudentGroup extends Component {
 
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
-    axios.get("https://rpmt-server.herokuapp.com/sgroups").then((res) => {
+    axios.get("http://localhost:5000/sgroups").then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingstudentgroups, searchKey);
       }

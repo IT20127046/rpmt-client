@@ -29,7 +29,7 @@ export class StudentMarksSp extends Component {
   //retrive marks
   retriveMarks() {
     const id = this.state.groupId;
-    axios.get(`https://rpmt-server.herokuapp.com/marks/group/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/marks/group/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           marks: res.data.existingMarks,

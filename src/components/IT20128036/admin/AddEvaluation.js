@@ -67,7 +67,7 @@ export default class AddEvaluation extends Component {
     };
     console.log(data);
     //save evaluations
-    axios.post("https://rpmt-server.herokuapp.com/evaluation/save", data).then((res) => {
+    axios.post("http://localhost:5000/evaluation/save", data).then((res) => {
       if (res.data.success) {
         swal("Added Evaluation Successfully !", "", "success").then((value) => {
           window.location = "/evaluation/add";

@@ -48,7 +48,7 @@ export default class EditSubmitonType extends Component {
     console.log(data);
     //update submitiontype
     axios
-      .put(`https://rpmt-server.herokuapp.com/submitiontype/update/${id}`, data)
+      .put(`http://localhost:5000/submitiontype/update/${id}`, data)
       .then((res) => {
         if (res.data.success) {
           swal(" Updated Successfully !", "", "success").then((value) => {
@@ -73,7 +73,7 @@ export default class EditSubmitonType extends Component {
     const id = this.props.match.params.id;
 
     //retrive submitiontype to update
-    axios.get(`https://rpmt-server.herokuapp.com/submitiontype/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/submitiontype/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           submitionType: res.data.submitiontype.submitionType,

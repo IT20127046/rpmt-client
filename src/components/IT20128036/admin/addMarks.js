@@ -85,7 +85,7 @@ export default class AddMarks extends Component {
     };
     console.log(data);
     //save marks
-    axios.post(`https://rpmt-server.herokuapp.com/mark/save`, data).then((res) => {
+    axios.post(`http://localhost:5000/mark/save`, data).then((res) => {
       if (res.data.success) {
         swal("Marks Added Successfully !", "", "success").then((value) => {
           window.location = "/submitions/view";
@@ -108,7 +108,7 @@ export default class AddMarks extends Component {
     //update status
     const ids = this.props.match.params.id;
     axios
-      .put(`https://rpmt-server.herokuapp.com/submition/update/${ids}`, statusdata)
+      .put(`http://localhost:5000/submition/update/${ids}`, statusdata)
       .then((res) => {
         if (res.data.success) {
           console.log("Updated Successfully");
@@ -121,7 +121,7 @@ export default class AddMarks extends Component {
     const id = this.props.match.params.id;
 
     //retrive submition data
-    axios.get(`https://rpmt-server.herokuapp.com/submition/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/submition/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
           groupId: res.data.submition.groupId,

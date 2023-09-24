@@ -63,7 +63,7 @@ export default class DocumentTemp_Admin extends Component {
     };
 
     axios({
-      url: "https://rpmt-server.herokuapp.com/file/download",
+      url: "http://localhost:5000/file/download",
       data,
       method: "POST",
       responseType: "blob",

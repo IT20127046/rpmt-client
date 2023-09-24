@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export const userRegister = newUser => {
-    return axios.post('https://rpmt-server.herokuapp.com/user/registration', {
+    return axios.post('http://localhost:5000/user/registration', {
             idNumber: newUser.idNumber,
             name: newUser.name,
             email: newUser.email,

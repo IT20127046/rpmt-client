@@ -47,7 +47,7 @@ function AddSubmition() {
     setdescription("");
     //save submition
     axios
-      .post("https://rpmt-server.herokuapp.com/submition", formdata)
+      .post("http://localhost:5000/submition", formdata)
       .then(() => {
         swal("Submitted Successfully !", "", "success").then((value) => {
           window.location = `/student/submitionsp/view`;

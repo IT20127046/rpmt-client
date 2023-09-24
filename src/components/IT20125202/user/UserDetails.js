@@ -32,7 +32,7 @@ export default class UserProfile extends Component {
 
         const id = this.props.match.params.id;
 
-        axios.get(`https://rpmt-server.herokuapp.com/user/${id}`).then((res) => {
+        axios.get(`http://localhost:5000/user/${id}`).then((res) => {
             if (res.data.success) {
                 this.setState({
                     user: res.data.user

@@ -29,7 +29,7 @@ export default function DocumentTempCreate() {
     setDescription("");
     setfile("");
 
-    axios.post("https://rpmt-server.herokuapp.com/template/add", formdata).then(() => {
+    axios.post("http://localhost:5000/template/add", formdata).then(() => {
 
         swal("Document Upload Successful!")
         .then((value) => {

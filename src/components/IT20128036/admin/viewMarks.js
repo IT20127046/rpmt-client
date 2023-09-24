@@ -31,7 +31,7 @@ export default class viewMarks extends Component {
   //retrive marks
   retriveMarks() {
     const name = this.state.markedby;
-    axios.get(`https://rpmt-server.herokuapp.com/marks/supervisor/${name}`).then((res) => {
+    axios.get(`http://localhost:5000/marks/supervisor/${name}`).then((res) => {
       if (res.data.success) {
         this.setState({
           marks: res.data.existingMarks,
@@ -52,7 +52,7 @@ export default class viewMarks extends Component {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        axios.delete(`https://rpmt-server.herokuapp.com/mark/delete/${id}`).then((res) => {
+        axios.delete(`http://localhost:5000/mark/delete/${id}`).then((res) => {
           this.retriveMarks();
         });
 
@@ -83,7 +83,7 @@ export default class viewMarks extends Component {
     const searchKey = e.currentTarget.value;
 
     const name = this.state.markedby;
-    axios.get(`https://rpmt-server.herokuapp.com/marks/supervisor/${name}`).then((res) => {
+    axios.get(`http://localhost:5000/marks/supervisor/${name}`).then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingMarks, searchKey);
       }

@@ -28,7 +28,7 @@ export default function GroupChatAdmin() {
 
     setUsername(decoded.name);
 
-    axios.get("https://rpmt-server.herokuapp.com/sgroups")
+    axios.get("http://localhost:5000/sgroups")
     .then(res => {setStudentGroups(res.data.existingstudentgroups)});
     console.log(studentGroups);
   }, [])

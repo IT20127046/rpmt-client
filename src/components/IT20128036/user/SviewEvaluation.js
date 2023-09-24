@@ -15,7 +15,7 @@ export default class SviewEvaluation extends Component {
   }
   //retrive evaluations
   retriveEvaluations() {
-    axios.get("https://rpmt-server.herokuapp.com/evaluations").then((res) => {
+    axios.get("http://localhost:5000/evaluations").then((res) => {
       if (res.data.success) {
         this.setState({
           evaluations: res.data.existingEvaluations,
@@ -28,7 +28,7 @@ export default class SviewEvaluation extends Component {
   //delete evaluation
   onDelete = (id) => {
     axios
-      .delete(`https://rpmt-server.herokuapp.com/evaluation/delete/${id}`)
+      .delete(`http://localhost:5000/evaluation/delete/${id}`)
       .then((res) => {
         alert("Deleted Successfully");
         this.retriveEvaluations();
@@ -52,7 +52,7 @@ export default class SviewEvaluation extends Component {
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios.get("https://rpmt-server.herokuapp.com/evaluations").then((res) => {
+    axios.get("http://localhost:5000/evaluations").then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingEvaluations, searchKey);
       }

@@ -32,7 +32,7 @@ export default class EvaluationList extends Component {
   //retrive evaluations
   retriveEvaluations() {
     const pnel = this.state.panel;
-    axios.get(`https://rpmt-server.herokuapp.com/evaluation/panel/${pnel}`).then((res) => {
+    axios.get(`http://localhost:5000/evaluation/panel/${pnel}`).then((res) => {
       if (res.data.success) {
         this.setState({
           evaluations: res.data.existingEvaluations,
@@ -53,7 +53,7 @@ export default class EvaluationList extends Component {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(`https://rpmt-server.herokuapp.com/evaluation/delete/${id}`)
+          .delete(`http://localhost:5000/evaluation/delete/${id}`)
           .then((res) => {
             this.retriveEvaluations();
           });
@@ -83,7 +83,7 @@ export default class EvaluationList extends Component {
     const searchKey = e.currentTarget.value;
 
     const pnel = this.state.panel;
-    axios.get(`https://rpmt-server.herokuapp.com/evaluation/panel/${pnel}`).then((res) => {
+    axios.get(`http://localhost:5000/evaluation/panel/${pnel}`).then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingEvaluations, searchKey);
       }

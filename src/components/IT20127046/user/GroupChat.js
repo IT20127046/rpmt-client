@@ -21,7 +21,7 @@ export default function GroupChat({ socket, username, room }) {
         };
 
         console.log(messageData);
-        axios.post("https://rpmt-server.herokuapp.com/save/chatMsg", messageData)
+        axios.post("http://localhost:5000/save/chatMsg", messageData)
         .then(() => {
             //alert('Message Save Successful');
         })
@@ -43,7 +43,7 @@ export default function GroupChat({ socket, username, room }) {
     }, [socket]);
   
     const getPreMsg = () => {
-      axios.get(`https://rpmt-server.herokuapp.com/chatMsg/get/${room}`)
+      axios.get(`http://localhost:5000/chatMsg/get/${room}`)
         .then(res => {setSavedMsg(res.data)});
   
         console.log(savedMsg);

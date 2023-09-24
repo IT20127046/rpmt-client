@@ -36,7 +36,7 @@ export default class ViewListAdmin extends Component {
 
   //method for get request
   retrieveTopics() {
-    axios.get('https://rpmt-server.herokuapp.com/topics').then(res => {
+    axios.get('http://localhost:5000/topics').then(res => {
       if (res.data.success) {
         this.setState({
           topics: res.data.existingTopics
@@ -58,7 +58,7 @@ export default class ViewListAdmin extends Component {
     })
       .then((willDelete) => {
         if (willDelete) {
-          axios.delete(`https://rpmt-server.herokuapp.com/topic/delete/${id}`).then((res) => {
+          axios.delete(`http://localhost:5000/topic/delete/${id}`).then((res) => {
             swal("Deleted Permanently!", "", "success")
               .then((value) => {
                 if (value) {
@@ -79,7 +79,7 @@ export default class ViewListAdmin extends Component {
 
     const searchKey = e.currentTarget.value;
 
-    axios.get('https://rpmt-server.herokuapp.com/topics').then(res => {
+    axios.get('http://localhost:5000/topics').then(res => {
       if (res.data.success) {
 
         this.filterData(res.data.existingTopics, searchKey);
